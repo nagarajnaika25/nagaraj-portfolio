@@ -7,40 +7,52 @@
   <meta name="description" content="QA Automation Engineer (SDET) | 6.4 yrs professional exp + 7 months QA internship | Java, Selenium, TestNG, Cucumber, Cypress, Playwright | API Testing | SQL" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <!-- NAV -->
-<nav>
-  <div class="navbar">
-    <a class="brand" href="#top">Nagaraj Naik</a>
-
-    <div class="navlinks">
-      <a href="#bio">Bio</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#tosca">Tosca Demo</a>
-      <span class="nav-underline"></span>
-    </div>
+  <!-- TOP WELCOME TOAST -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    👋 Welcome, Nagaraj’s Portfolio is live! Explore skills, projects & experience.
+    <button id="toastClose" class="toast-close" aria-label="Close">✕</button>
   </div>
-</nav>
 
+  <!-- NAV -->
+  <nav>
+    <div class="navbar">
+      <a class="brand" href="#top">Nagaraj Naik</a>
+
+      <div class="navlinks">
+        <a href="#bio">Bio</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#demo">Demo</a>
+
+        <!-- underline slider -->
+        <span class="nav-underline"></span>
+      </div>
+    </div>
+  </nav>
 
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="container hero-grid">
-      <div class="reveal">
-        <h1>QA Automation Engineer (SDET)</h1>
+      <div class="hero-intro">
+        <h1><span id="typeText"></span><span class="cursor">|</span></h1>
+
+
         <p class="subtitle">
           Bangalore • <strong>6.4 years professional experience</strong> + <strong>7 months QA Automation internship</strong><br/>
           Java | Selenium | TestNG | Cucumber | Cypress | Playwright • API Testing (Postman/RestAssured) • SQL
         </p>
 
-        <a class="btn primary" href="resume.pdf" download>Download Resume (PDF)</a>
-        <a class="btn" href="mailto:naiknagaraj877@gmail.com">Email</a>
-        <a class="btn" href="https://github.com/nagarajnaika25" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn" href="https://linkedin.com/in/nagarajnaik961" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="cta-row">
+          <a class="btn primary" href="resume.pdf" download>Download Resume (PDF)</a>
+          <a class="btn" href="mailto:nagarajnaiknew36@gmail.com">Email</a>
+          <a class="btn" href="https://github.com/nagarajnaika25" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="https://linkedin.com/in/nagarajnaik961" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
 
         <div class="badges">
           <span class="badge">Associate QA / QA Automation</span>
@@ -50,7 +62,7 @@
         </div>
       </div>
 
-      <div class="card floaty reveal">
+      <div class="card floaty hero-intro delay">
         <h2 style="margin-bottom:10px;">Quick Highlights</h2>
         <ul>
           <li>STLC/SDLC, defect lifecycle, Agile</li>
@@ -58,6 +70,11 @@
           <li>SQL (DDL/DML/Joins) data validation</li>
           <li>Tools: Jira, Jenkins, Docker, GitHub</li>
         </ul>
+
+        <div class="quote">
+          <p class="quote-text">“Believe in yourself. Every step counts — consistency wins.”</p>
+          <p class="quote-sub">— Daily reminder</p>
+        </div>
       </div>
     </div>
   </header>
@@ -67,37 +84,44 @@
     <!-- BIO -->
     <section class="section card reveal" id="bio">
       <h2>Bio</h2>
+
       <p id="bioText">
         QA Automation Engineer (Associate level) with 7 months of hands-on internship experience in manual and automation testing.
         Proficient in Java, Selenium, TestNG, Cucumber, Cypress, Playwright, API testing (Postman/RestAssured), and SQL.
         Strong understanding of test case design, defect lifecycle, SDLC, STLC, and Agile. Seeking an Associate QA / QA Automation Engineer role.
       </p>
+
       <p class="muted" style="margin-top:10px;">
-        Portfolio website hosted on GitHub Pages. Includes a Tosca demo section for automation showcase.
+        Tip: Click on any skill below to see what I can do with it.
       </p>
     </section>
 
     <!-- SKILLS -->
     <section class="section card reveal" id="skills">
-      <h2>Automation Skills</h2>
-      <p class="muted">Hover on skills 👇</p>
-      <div class="skills">
-        <span>Tosca</span>
-        <span>Selenium WebDriver</span>
-        <span>Java</span>
-        <span>TestNG</span>
-        <span>Cucumber</span>
-        <span>Cypress</span>
-        <span>Playwright</span>
-        <span>Postman</span>
-        <span>RestAssured</span>
-        <span>SQL (Joins)</span>
-        <span>Jenkins</span>
-        <span>Docker</span>
-        <span>Jira</span>
-        <span>GitHub</span>
-        <span>Agile</span>
-        <span>STLC / SDLC</span>
+      <div class="section-head">
+        <h2>Skills</h2>
+        <button id="demoPlay" class="btn small">▶ Demo Mode</button>
+      </div>
+
+      <p class="muted">Click a skill to view details 👇</p>
+
+      <div class="skills" id="skillsWrap">
+        <button class="skill" data-skill="Tosca">Tosca</button>
+        <button class="skill" data-skill="Selenium">Selenium WebDriver</button>
+        <button class="skill" data-skill="Java">Java</button>
+        <button class="skill" data-skill="TestNG">TestNG</button>
+        <button class="skill" data-skill="Cucumber">Cucumber</button>
+        <button class="skill" data-skill="Cypress">Cypress</button>
+        <button class="skill" data-skill="Playwright">Playwright</button>
+        <button class="skill" data-skill="Postman">Postman</button>
+        <button class="skill" data-skill="RestAssured">RestAssured</button>
+        <button class="skill" data-skill="SQL">SQL (Joins)</button>
+        <button class="skill" data-skill="Jenkins">Jenkins</button>
+        <button class="skill" data-skill="Docker">Docker</button>
+        <button class="skill" data-skill="Jira">Jira</button>
+        <button class="skill" data-skill="GitHub">GitHub</button>
+        <button class="skill" data-skill="Agile">Agile</button>
+        <button class="skill" data-skill="STLC">STLC / SDLC</button>
       </div>
     </section>
 
@@ -108,11 +132,11 @@
       <div class="project">
         <div class="project-head">
           <h3>API Testing – Contact List Application</h3>
-          <a class="btn" href="https://github.com/nagarajnaika25/Capstone_Project_2025.git" target="_blank" rel="noreferrer">View Repo</a>
+          <a class="btn small" href="https://github.com/nagarajnaika25/Capstone_Project_2025.git" target="_blank" rel="noreferrer">View Repo</a>
         </div>
         <ul>
-          <li>Built 30+ API scripts using RestAssured for CRUD validations.</li>
-          <li>Validated status codes, headers, schema, payload integrity; positive/negative/boundary test cases.</li>
+          <li>Built API scripts using RestAssured for CRUD validations.</li>
+          <li>Validated status codes, headers, schema, payload integrity; positive/negative/boundary tests.</li>
         </ul>
       </div>
 
@@ -123,7 +147,7 @@
         </div>
         <ul>
           <li>Automated end-to-end scenarios; maintainable POM structure.</li>
-          <li>Executed regression suites and handled dynamic elements using waits and locators.</li>
+          <li>Regression execution and stable element handling (waits/locators).</li>
         </ul>
       </div>
 
@@ -133,19 +157,25 @@
           <span class="pill">Selenium • Cucumber • TestNG</span>
         </div>
         <ul>
-          <li>Automated login, search, cart, checkout flows; identified UI & functional defects.</li>
-          <li>Created data-driven validations across user journey.</li>
+          <li>Automated login/search/cart/checkout and identified UI + functional defects.</li>
+          <li>Data-driven validations across user journey.</li>
         </ul>
       </div>
     </section>
 
-    <!-- EXPERIENCE (Animated Timeline) -->
+    <!-- EXPERIENCE -->
     <section class="section card reveal" id="experience">
-      <h2>Experience</h2>
-      <p class="muted">Timeline with “live” reveal animation while scrolling.</p>
+      <div class="section-head">
+        <h2>Experience</h2>
+        <div class="counter">
+          <span class="counter-num" id="expCount">0.0</span>
+          <span class="counter-label">Years Experience</span>
+        </div>
+      </div>
+
+      <p class="muted">Animated timeline. Scroll to reveal.</p>
 
       <div class="timeline">
-
         <div class="t-item reveal">
           <div class="t-dot"></div>
           <div class="t-content">
@@ -154,9 +184,9 @@
               <span class="pill">Jun 2025 – Dec 2025</span>
             </div>
             <ul>
-              <li>Hands-on automation practice with Java + Selenium WebDriver + TestNG.</li>
-              <li>Functional, regression & API testing using Cypress, Postman, RestAssured, Maven, Git.</li>
-              <li>Created test cases/scripts and logged defects with severity and priority.</li>
+              <li>Hands-on automation with Java + Selenium WebDriver + TestNG.</li>
+              <li>Functional, regression & API testing: Cypress, Postman, RestAssured, Maven, Git.</li>
+              <li>Authored test cases/scripts and logged defects with severity & priority.</li>
             </ul>
           </div>
         </div>
@@ -171,7 +201,7 @@
             <p class="muted" style="margin-bottom:8px;">Enrollment Operations | Quality Analyst</p>
             <ul>
               <li>Reviewed insurance policies and verified entries across systems for accuracy and consistency.</li>
-              <li>Used complex SQL joins to validate data integrity for insurance policies (high accuracy in claim entries).</li>
+              <li>Used SQL joins to validate data integrity for insurance policies and claim entries.</li>
               <li>Documented defects and collaborated with teams for resolutions.</li>
             </ul>
           </div>
@@ -200,7 +230,7 @@
             </div>
             <p class="muted" style="margin-bottom:8px;">Junior Associate</p>
             <ul>
-              <li>Handled customer orders, billing, daily stock management & returns processes.</li>
+              <li>Handled customer orders, billing, stock management & returns processes.</li>
             </ul>
           </div>
         </div>
@@ -218,7 +248,6 @@
             </ul>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -241,10 +270,12 @@
       </div>
     </section>
 
-    <!-- TOSCA DEMO -->
-    <section class="section card reveal" id="tosca">
-      <h2>Tosca Demo – Update & Validate Bio</h2>
-      <p class="muted">Use this section for Tosca automation: input → save → verify.</p>
+    <!-- DEMO -->
+    <section class="section card reveal" id="demo">
+      <h2>Live Demo</h2>
+      <p class="muted">
+        This section is interactive for automation demos (update bio + verify message).
+      </p>
 
       <label for="bioInput">New Bio Text</label>
       <textarea id="bioInput" rows="3" placeholder="Type new bio here..."></textarea>
@@ -256,26 +287,100 @@
 
       <p id="saveMsg" class="msg" aria-live="polite"></p>
 
-      <p class="muted" style="margin-top:14px;">
-        Portfolio line: <strong>Automated profile management functionality using Tosca, validating dynamic content updates and UI stability.</strong>
-      </p>
+      <div class="quote quote-bottom">
+        <p class="quote-text">“Believe you self. Keep learning. Keep moving.”</p>
+        <p class="quote-sub">— You are stronger than you think</p>
+      </div>
     </section>
 
     <footer>
-      © <span id="year"></span> Nagaraj Naik • HTML/CSS • Hosted on GitHub Pages
+      © <span id="year"></span> Nagaraj Naik • Hosted on GitHub Pages
     </footer>
+
   </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  <!-- SKILL MODAL -->
+  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true"></div>
 
-    // Bio demo
-    const originalBio = document.getElementById("bioText").textContent;
-    const bioText = document.getElementById("bioText");
-    const bioInput = document.getElementById("bioInput");
-    const saveBtn = document.getElementById("saveBtn");
-    const resetBtn = document.getElementById("resetBtn");
-    const saveMsg = document.getElementById("saveMsg");
+  <div id="skillModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalBody" aria-hidden="true">
+    <div class="modal-header">
+      <h3 id="modalTitle">Skill</h3>
+      <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
+    </div>
+    <div id="modalBody" class="modal-body"></div>
+    <div class="modal-footer">
+      <button id="modalOk" class="btn small primary" type="button">OK</button>
+    </div>
+  </div>
+
+  <script>
+
+    /* ===== Typing effect ===== */
+const lines = [
+  "QA Automation Engineer (SDET)",
+  "Java • Selenium • TestNG • Cucumber",
+  "API Testing • Postman • RestAssured",
+  "SQL Validation • Agile • STLC/SDLC"
+];
+
+const typeEl = document.getElementById("typeText");
+let lineIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeLoop(){
+  const currentLine = lines[lineIndex];
+
+  if (!deleting) {
+    typeEl.textContent = currentLine.substring(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === currentLine.length) {
+      deleting = true;
+      setTimeout(typeLoop, 1200);
+      return;
+    }
+  } else {
+    typeEl.textContent = currentLine.substring(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      deleting = false;
+      lineIndex = (lineIndex + 1) % lines.length;
+    }
+  }
+
+  setTimeout(typeLoop, deleting ? 40 : 70);
+}
+
+typeLoop();
+
+    /* =========================
+       0) Helpers
+       ========================= */
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => document.querySelectorAll(s);
+
+    /* =========================
+       1) Welcome Toast
+       ========================= */
+    const toast = $("#toast");
+    const toastClose = $("#toastClose");
+    toastClose.addEventListener("click", () => toast.classList.add("hide"));
+    setTimeout(() => toast.classList.add("hide"), 6500);
+
+    /* =========================
+       2) Year
+       ========================= */
+    $("#year").textContent = new Date().getFullYear();
+
+    /* =========================
+       3) Bio Demo (kept for automation)
+       ========================= */
+    const originalBio = $("#bioText").textContent;
+    const bioText = $("#bioText");
+    const bioInput = $("#bioInput");
+    const saveBtn = $("#saveBtn");
+    const resetBtn = $("#resetBtn");
+    const saveMsg = $("#saveMsg");
 
     saveBtn.addEventListener("click", () => {
       const val = bioInput.value.trim();
@@ -296,91 +401,377 @@
       saveMsg.className = "msg";
     });
 
-    const observer = new IntersectionObserver((entries) => {
+    /* =========================
+       4) Scroll Reveal
+       ========================= */
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("in");
       });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-  </script>
-  <script>
-/* ========= 1) Stop auto if user interacts ========= */
-let userInteracted = false;
-document.addEventListener("click", () => userInteracted = true, { once: true });
-document.addEventListener("scroll", () => userInteracted = true, { once: true });
+    $$(".reveal").forEach(el => revealObserver.observe(el));
 
-/* ========= 2) Auto-scroll + highlight only if no interaction ========= */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    if (!userInteracted) {
-      const bioSection = document.getElementById("bio");
-      const bioLink = document.querySelector('.navlinks a[href="#bio"]');
-      bioSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    /* =========================
+       5) Navbar underline + active section
+       ========================= */
+    let userInteracted = false;
+    ["click","wheel","touchstart","keydown"].forEach(evt=>{
+      document.addEventListener(evt,()=> userInteracted=true,{once:true});
+    });
 
-      document.querySelectorAll(".navlinks a").forEach(a => a.classList.remove("active"));
-      bioLink.classList.add("active");
-      moveUnderlineTo(bioLink);
+    const sections = $$("section");
+    const navLinks = $$(".navlinks a");
+    const underline = $(".nav-underline");
+
+    function moveUnderlineTo(link){
+      if (!underline || !link) return;
+      const parent = link.parentElement;
+      const linkRect = link.getBoundingClientRect();
+      const parentRect = parent.getBoundingClientRect();
+      underline.style.width = `${linkRect.width}px`;
+      underline.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
     }
-  }, 900);
-});
 
+    function setActiveLinkById(id){
+      navLinks.forEach(a => a.classList.remove("active"));
+      const active = document.querySelector(`.navlinks a[href="#${id}"]`);
+      if (active){
+        active.classList.add("active");
+        moveUnderlineTo(active);
+      }
+    }
 
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navlinks a");
+    navLinks.forEach(link => {
+      link.addEventListener("mouseenter", () => moveUnderlineTo(link));
+      link.addEventListener("click", () => {
+        userInteracted = true;
+        setTimeout(() => moveUnderlineTo(link), 50);
+      });
+    });
 
-function setActiveLinkById(id) {
-  navLinks.forEach(a => a.classList.remove("active"));
-  const active = document.querySelector(`.navlinks a[href="#${id}"]`);
-  if (active) {
-    active.classList.add("active");
-    moveUnderlineTo(active);
-  }
-}
+    window.addEventListener("resize", () => {
+      const active = $(".navlinks a.active");
+      if (active) moveUnderlineTo(active);
+    });
 
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 140;
-    if (window.scrollY >= sectionTop) current = section.getAttribute("id");
-  });
-  if (current) setActiveLinkById(current);
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        if (window.scrollY >= sectionTop) current = section.getAttribute("id");
+      });
+      if (current) setActiveLinkById(current);
 
-  
-  const nav = document.querySelector("nav");
-  if (window.scrollY > 10) nav.classList.add("nav-scrolled");
-  else nav.classList.remove("nav-scrolled");
-});
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 10) nav.classList.add("nav-scrolled");
+      else nav.classList.remove("nav-scrolled");
+    });
 
+    /* =========================
+       6) Video-like Auto Showcase
+       - plays only if user doesn't interact
+       - stops on any user action
+       ========================= */
+    let autoPlay = true;
+    ["scroll","click","wheel","touchstart","keydown"].forEach(evt=>{
+      document.addEventListener(evt,()=> autoPlay=false,{once:true});
+    });
 
-function moveUnderlineTo(link) {
-  const underline = document.querySelector(".nav-underline");
-  if (!underline || !link) return;
+    function runShowcase(){
+      if (!autoPlay || userInteracted) return;
+      const order = ["#bio","#skills","#projects","#experience","#education","#demo"];
+      let i = 0;
 
-  const parent = link.parentElement; // .navlinks
-  const linkRect = link.getBoundingClientRect();
-  const parentRect = parent.getBoundingClientRect();
+      const step = () => {
+        if (!autoPlay || userInteracted || i >= order.length) return;
+        const el = document.querySelector(order[i]);
+        if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+        i++;
+        setTimeout(step, 2200);
+      };
 
-  underline.style.width = `${linkRect.width}px`;
-  underline.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
-}
+      step();
+    }
 
-navLinks.forEach(link => {
-  link.addEventListener("mouseenter", () => moveUnderlineTo(link));
-  link.addEventListener("click", () => {
-    userInteracted = true;      // stop auto forever after click
-    setTimeout(() => moveUnderlineTo(link), 50);
-  });
-});
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        // set default active underline
+        const bioLink = document.querySelector('.navlinks a[href="#bio"]');
+        if (bioLink) {
+          bioLink.classList.add("active");
+          moveUnderlineTo(bioLink);
+        }
+        runShowcase();
+      }, 900);
+    });
 
-window.addEventListener("resize", () => {
-  const active = document.querySelector(".navlinks a.active");
-  if (active) moveUnderlineTo(active);
-});
-</script>
+    /* =========================
+       7) Skill Click → Modal Info
+       ========================= */
+    const skillInfo = {
+      "Tosca": {
+        title: "Tosca (Tricentis)",
+        body: `
+          <ul>
+            <li>Model-based automation: easy maintenance.</li>
+            <li>Good for regression suites and enterprise apps.</li>
+            <li>Best use: smoke + regression + stable UI validation.</li>
+          </ul>
+          <p class="muted">Example: Automate “Update Bio” demo and verify messages.</p>
+        `
+      },
+      "Selenium": {
+        title: "Selenium WebDriver",
+        body: `
+          <ul>
+            <li>Web UI automation with stable locators and waits.</li>
+            <li>POM + TestNG/Cucumber for scalable frameworks.</li>
+            <li>Good for cross-browser UI validation.</li>
+          </ul>
+        `
+      },
+      "Java": {
+        title: "Java",
+        body: `
+          <ul>
+            <li>Core language for automation framework development.</li>
+            <li>OOP concepts for reusable test utilities.</li>
+            <li>Works well with Maven, TestNG, Cucumber.</li>
+          </ul>
+        `
+      },
+      "TestNG": {
+        title: "TestNG",
+        body: `
+          <ul>
+            <li>Test suites, groups, priorities, listeners.</li>
+            <li>Parallel execution support.</li>
+            <li>Reporting & retry logic patterns.</li>
+          </ul>
+        `
+      },
+      "Cucumber": {
+        title: "Cucumber (BDD)",
+        body: `
+          <ul>
+            <li>Gherkin scenarios for readable tests.</li>
+            <li>Step definitions map business flows to automation.</li>
+            <li>Helps collaboration with non-technical stakeholders.</li>
+          </ul>
+        `
+      },
+      "Cypress": {
+        title: "Cypress",
+        body: `
+          <ul>
+            <li>Fast modern UI testing for web apps.</li>
+            <li>Automatic waits and good debugging.</li>
+            <li>Great for smoke + UI workflows.</li>
+          </ul>
+        `
+      },
+      "Playwright": {
+        title: "Playwright",
+        body: `
+          <ul>
+            <li>Modern cross-browser automation (Chromium/Firefox/WebKit).</li>
+            <li>Strong for end-to-end flows + performance-friendly testing.</li>
+            <li>Great with parallel runs in CI.</li>
+          </ul>
+        `
+      },
+      "Postman": {
+        title: "Postman",
+        body: `
+          <ul>
+            <li>API request collections for manual + automated API checks.</li>
+            <li>Environments, variables, auth, quick validations.</li>
+            <li>Perfect for API smoke suite.</li>
+          </ul>
+        `
+      },
+      "RestAssured": {
+        title: "RestAssured",
+        body: `
+          <ul>
+            <li>Java library for API automation.</li>
+            <li>Validations for status codes, schemas, payloads.</li>
+            <li>Used for CRUD + boundary + negative tests.</li>
+          </ul>
+        `
+      },
+      "SQL": {
+        title: "SQL (Joins)",
+        body: `
+          <ul>
+            <li>Validate backend data for UI/API test cases.</li>
+            <li>Joins for relational checks across tables.</li>
+            <li>Used for data integrity validation in healthcare operations.</li>
+          </ul>
+        `
+      },
+      "Jenkins": {
+        title: "Jenkins",
+        body: `
+          <ul>
+            <li>CI pipelines to run automation suites.</li>
+            <li>Scheduled regression, reports, build triggers.</li>
+          </ul>
+        `
+      },
+      "Docker": {
+        title: "Docker",
+        body: `
+          <ul>
+            <li>Containerized test environments.</li>
+            <li>Consistent execution across machines/CI.</li>
+          </ul>
+        `
+      },
+      "Jira": {
+        title: "Jira",
+        body: `
+          <ul>
+            <li>Bug tracking, sprint planning, workflows.</li>
+            <li>Defect lifecycle: severity/priority with clear notes.</li>
+          </ul>
+        `
+      },
+      "GitHub": {
+        title: "GitHub",
+        body: `
+          <ul>
+            <li>Version control + collaboration.</li>
+            <li>GitHub Pages hosting (this site).</li>
+            <li>PR reviews, branching, clean commits.</li>
+          </ul>
+        `
+      },
+      "Agile": {
+        title: "Agile",
+        body: `
+          <ul>
+            <li>Iteration-based delivery and continuous feedback.</li>
+            <li>Daily standups, sprint planning, retrospectives.</li>
+          </ul>
+        `
+      },
+      "STLC": {
+        title: "STLC / SDLC",
+        body: `
+          <ul>
+            <li>Requirements → test planning → execution → reporting.</li>
+            <li>Defect lifecycle & release validation.</li>
+            <li>Smoke → regression → UAT support.</li>
+          </ul>
+        `
+      }
+    };
 
+    const modal = $("#skillModal");
+    const backdrop = $("#modalBackdrop");
+    const modalTitle = $("#modalTitle");
+    const modalBody = $("#modalBody");
+    const modalClose = $("#modalClose");
+    const modalOk = $("#modalOk");
+
+    function openModal(skillKey){
+      const info = skillInfo[skillKey] || {
+        title: skillKey,
+        body: `<p class="muted">Details coming soon.</p>`
+      };
+      modalTitle.textContent = info.title;
+      modalBody.innerHTML = info.body;
+
+      backdrop.classList.add("show");
+      modal.classList.add("show");
+      backdrop.setAttribute("aria-hidden","false");
+      modal.setAttribute("aria-hidden","false");
+      document.body.classList.add("no-scroll");
+      modalClose.focus();
+    }
+
+    function closeModal(){
+      backdrop.classList.remove("show");
+      modal.classList.remove("show");
+      backdrop.setAttribute("aria-hidden","true");
+      modal.setAttribute("aria-hidden","true");
+      document.body.classList.remove("no-scroll");
+    }
+
+    $("#skillsWrap").addEventListener("click", (e) => {
+      const btn = e.target.closest(".skill");
+      if (!btn) return;
+      openModal(btn.dataset.skill);
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modalOk.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", closeModal);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    /* =========================
+       8) Experience counter animation (starts when experience is visible)
+       ========================= */
+    const expTarget = 6.4; // your professional experience display
+    const expCount = $("#expCount");
+    let counterStarted = false;
+
+    const expObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !counterStarted) {
+          counterStarted = true;
+          let start = 0.0;
+          const duration = 1200;
+          const t0 = performance.now();
+
+          const tick = (t) => {
+            const p = Math.min(1, (t - t0) / duration);
+            const val = start + (expTarget - start) * p;
+            expCount.textContent = val.toFixed(1);
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    expObserver.observe($("#experience"));
+
+    /* =========================
+       9) Demo Mode button (manually trigger showcase)
+       ========================= */
+    const demoBtn = $("#demoPlay");
+    let demoRunning = false;
+
+    demoBtn.addEventListener("click", () => {
+      userInteracted = true; // demo mode counts as interaction (stops autoplay)
+      autoPlay = false;
+
+      if (demoRunning) return;
+      demoRunning = true;
+
+      const order = ["#bio","#skills","#projects","#experience","#education","#demo"];
+      let i = 0;
+
+      demoBtn.textContent = "▶ Playing...";
+      const step = () => {
+        if (i >= order.length) {
+          demoBtn.textContent = "▶ Demo Mode";
+          demoRunning = false;
+          return;
+        }
+        const el = document.querySelector(order[i]);
+        if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+        i++;
+        setTimeout(step, 2000);
+      };
+      step();
+    });
+  </script>
 
 </body>
 </html>
-
-
