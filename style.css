@@ -62,9 +62,14 @@ nav{
 
 .brand{
   font-weight: 800;
-  letter-spacing: .3px;
+  font-size: 28px;   
+  letter-spacing: .5px;
   text-decoration: none;
   color: #f8fafc;
+}
+.brand:hover{
+  color: #38bdf8;
+  text-shadow: 0 0 12px rgba(56,189,248,0.6);
 }
 
 .navlinks{
