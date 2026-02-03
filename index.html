@@ -16,70 +16,21 @@
     <button id="toastClose" class="toast-close" aria-label="Close">✕</button>
   </div>
 
+  <!-- NAV -->
   <nav>
-  <div class="navbar">
-    <a class="brand" href="#top">
-      <img class="avatar" src="assets/profile.png" alt="Nagaraj Naik">
-      <span class="brand-name">Nagaraj Naik</span>
-    </a>
+    <div class="navbar">
+      <a class="brand" href="#top">
+        <img class="avatar" src="assets/profile.png" alt="Nagaraj Naik">
+        <span class="brand-name">Nagaraj Naik</span>
+      </a>
 
-    <div class="navlinks">
-      <a href="#bio">Bio</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#demo">Demo</a>
-      <span class="nav-underline"></span>
-    </div>
-  </div>
-</nav>
-
-<!-- MAIN CONTENT -->
-<main>
-
-  <section id="bio" class="section card reveal" data-img="assets/bio.jpg">
-  <h2>Bio</h2>
-  <img class="section-img" alt="Bio image">
-  <p>...</p>
-</section>
-
-  <section id="skills" class="section card reveal">
-    <h2>Skills</h2>
-    <img class="section-img" src="assets/skills.jpg" alt="Skills image">
-    ...
-  </section>
-
-  <section id="projects" class="section card reveal">
-    <h2>Projects</h2>
-    <img class="section-img" src="assets/projects.jpg" alt="Projects image">
-    ...
-  </section>
-
-  <section id="experience" class="section card reveal" data-img="assets/projects.jpg">
-  <h2>Experience</h2>
-  <img class="section-img" alt="Experience image">
-  ...
-</section>
-
-
- <section id="education" class="section card reveal" data-img="assets/education.jpg">
-  <h2>Education</h2>
-  <img class="section-img" alt="Education image">
-  ...
-</section>
-
-
-<section id="demo" class="section card reveal" data-img="assets/demo.jpg">
-  <h2>Demo</h2>
-  <img class="section-img" alt="Demo image">
-  ...
-</section>
-
-      
-
-
-        <!-- underline slider -->
+      <div class="navlinks">
+        <a href="#bio">Bio</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#demo">Demo</a>
         <span class="nav-underline"></span>
       </div>
     </div>
@@ -90,7 +41,6 @@
     <div class="container hero-grid">
       <div class="hero-intro">
         <h1><span id="typeText"></span><span class="cursor">|</span></h1>
-
 
         <p class="subtitle">
           Bangalore • <strong>6.4 years professional experience</strong> + <strong>7 months QA Automation internship</strong><br/>
@@ -129,55 +79,58 @@
     </div>
   </header>
 
+  <!-- MAIN -->
   <main class="container">
 
     <!-- BIO -->
-    <section class="section card reveal" id="bio">
+    <section id="bio" class="section card reveal" data-img="assets/bio.jpg">
       <h2>Bio</h2>
-
+      <img class="section-img" alt="Bio image">
       <p id="bioText">
         QA Automation Engineer (Associate level) with 7 months of hands-on internship experience in manual and automation testing.
         Proficient in Java, Selenium, TestNG, Cucumber, Cypress, Playwright, API testing (Postman/RestAssured), and SQL.
         Strong understanding of test case design, defect lifecycle, SDLC, STLC, and Agile. Seeking an Associate QA / QA Automation Engineer role.
       </p>
-
       <p class="muted" style="margin-top:10px;">
         Tip: Click on any skill below to see what I can do with it.
       </p>
     </section>
 
     <!-- SKILLS -->
-    <section class="section card reveal" id="skills">
+    <section id="skills" class="section card reveal" data-img="assets/skills.jpg">
       <div class="section-head">
         <h2>Skills</h2>
-        <button id="demoPlay" class="btn small">▶ Demo Mode</button>
+        <button id="demoPlay" class="btn small" type="button">▶ Demo Mode</button>
       </div>
+
+      <img class="section-img" alt="Skills image">
 
       <p class="muted">Click a skill to view details 👇</p>
 
       <div class="skills" id="skillsWrap">
-        <button class="skill" data-skill="Tosca">Tosca</button>
-        <button class="skill" data-skill="Selenium">Selenium WebDriver</button>
-        <button class="skill" data-skill="Java">Java</button>
-        <button class="skill" data-skill="TestNG">TestNG</button>
-        <button class="skill" data-skill="Cucumber">Cucumber</button>
-        <button class="skill" data-skill="Cypress">Cypress</button>
-        <button class="skill" data-skill="Playwright">Playwright</button>
-        <button class="skill" data-skill="Postman">Postman</button>
-        <button class="skill" data-skill="RestAssured">RestAssured</button>
-        <button class="skill" data-skill="SQL">SQL (Joins)</button>
-        <button class="skill" data-skill="Jenkins">Jenkins</button>
-        <button class="skill" data-skill="Docker">Docker</button>
-        <button class="skill" data-skill="Jira">Jira</button>
-        <button class="skill" data-skill="GitHub">GitHub</button>
-        <button class="skill" data-skill="Agile">Agile</button>
-        <button class="skill" data-skill="STLC">STLC / SDLC</button>
+        <button class="skill" data-skill="Tosca" type="button">Tosca</button>
+        <button class="skill" data-skill="Selenium" type="button">Selenium WebDriver</button>
+        <button class="skill" data-skill="Java" type="button">Java</button>
+        <button class="skill" data-skill="TestNG" type="button">TestNG</button>
+        <button class="skill" data-skill="Cucumber" type="button">Cucumber</button>
+        <button class="skill" data-skill="Cypress" type="button">Cypress</button>
+        <button class="skill" data-skill="Playwright" type="button">Playwright</button>
+        <button class="skill" data-skill="Postman" type="button">Postman</button>
+        <button class="skill" data-skill="RestAssured" type="button">RestAssured</button>
+        <button class="skill" data-skill="SQL" type="button">SQL (Joins)</button>
+        <button class="skill" data-skill="Jenkins" type="button">Jenkins</button>
+        <button class="skill" data-skill="Docker" type="button">Docker</button>
+        <button class="skill" data-skill="Jira" type="button">Jira</button>
+        <button class="skill" data-skill="GitHub" type="button">GitHub</button>
+        <button class="skill" data-skill="Agile" type="button">Agile</button>
+        <button class="skill" data-skill="STLC" type="button">STLC / SDLC</button>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section class="section card reveal" id="projects">
+    <section id="projects" class="section card reveal" data-img="assets/projects.jpg">
       <h2>Projects</h2>
+      <img class="section-img" alt="Projects image">
 
       <div class="project">
         <div class="project-head">
@@ -214,7 +167,7 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="section card reveal" id="experience">
+    <section id="experience" class="section card reveal" data-img="assets/projects.jpg">
       <div class="section-head">
         <h2>Experience</h2>
         <div class="counter">
@@ -222,6 +175,8 @@
           <span class="counter-label">Years Experience</span>
         </div>
       </div>
+
+      <img class="section-img" alt="Experience image">
 
       <p class="muted">Animated timeline. Scroll to reveal.</p>
 
@@ -302,8 +257,10 @@
     </section>
 
     <!-- EDUCATION -->
-    <section class="section card reveal" id="education">
+    <section id="education" class="section card reveal" data-img="assets/education.jpg">
       <h2>Education</h2>
+      <img class="section-img" alt="Education image">
+
       <div class="edu-grid">
         <div class="edu-card reveal">
           <h3>Bachelor of Computer Application (BCA)</h3>
@@ -321,11 +278,11 @@
     </section>
 
     <!-- DEMO -->
-    <section class="section card reveal" id="demo">
+    <section id="demo" class="section card reveal" data-img="assets/demo.jpg">
       <h2>Live Demo</h2>
-      <p class="muted">
-        This section is interactive for automation demos (update bio + verify message).
-      </p>
+      <img class="section-img" alt="Demo image">
+
+      <p class="muted">Update bio + verify message (use for automation demo).</p>
 
       <label for="bioInput">New Bio Text</label>
       <textarea id="bioInput" rows="3" placeholder="Type new bio here..."></textarea>
@@ -338,7 +295,7 @@
       <p id="saveMsg" class="msg" aria-live="polite"></p>
 
       <div class="quote quote-bottom">
-        <p class="quote-text">“Believe you self. Keep learning. Keep moving.”</p>
+        <p class="quote-text">“Believe yourself. Keep learning. Keep moving.”</p>
         <p class="quote-sub">— You are stronger than you think</p>
       </div>
     </section>
@@ -364,489 +321,261 @@
   </div>
 
   <script>
-
-/* ===== Show image only for clicked/active section ===== */
-
-
-
-const sectionsall = document.querySelectorAll(".section");
-
-function activateSection(id){
-  sectionsall.forEach(sec => sec.classList.remove("active"));
-
-  const sec = document.getElementById(id);
-  if (!sec) return;
-
-  sec.classList.add("active");
-
-  const img = sec.querySelector(".section-img");
-  const src = sec.getAttribute("data-img");
-  if (img && src) img.src = src;
-}
-
-document.querySelectorAll('.navlinks a[href^="#"]').forEach(link => {
-  link.addEventListener("click", () => {
-    const id = link.getAttribute("href").slice(1);
-    activateSection(id);
-  });
-});
-
-window.addEventListener("load", () => activateSection("bio"));
-
-
-
-
-    /* ===== Typing effect ===== */
-const lines = [
-  "QA Automation Engineer (SDET)",
-  "Java • Selenium • TestNG • Cucumber",
-  "API Testing • Postman • RestAssured",
-  "SQL Validation • Agile • STLC/SDLC"
-];
-
-const typeEl = document.getElementById("typeText");
-let lineIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function typeLoop(){
-  const currentLine = lines[lineIndex];
-
-  if (!deleting) {
-    typeEl.textContent = currentLine.substring(0, charIndex + 1);
-    charIndex++;
-    if (charIndex === currentLine.length) {
-      deleting = true;
-      setTimeout(typeLoop, 1200);
-      return;
-    }
-  } else {
-    typeEl.textContent = currentLine.substring(0, charIndex - 1);
-    charIndex--;
-    if (charIndex === 0) {
-      deleting = false;
-      lineIndex = (lineIndex + 1) % lines.length;
-    }
-  }
-
-  setTimeout(typeLoop, deleting ? 40 : 70);
-}
-
-typeLoop();
-
-    /* =========================
-       0) Helpers
-       ========================= */
+    /* Helpers */
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => document.querySelectorAll(s);
 
-    /* =========================
-       1) Welcome Toast
-       ========================= */
-    const toast = $("#toast");
-    const toastClose = $("#toastClose");
-    toastClose.addEventListener("click", () => toast.classList.add("hide"));
-    setTimeout(() => toast.classList.add("hide"), 6500);
-
-    /* =========================
-       2) Year
-       ========================= */
+    /* Year */
     $("#year").textContent = new Date().getFullYear();
 
-    /* =========================
-       3) Bio Demo (kept for automation)
-       ========================= */
-    const originalBio = $("#bioText").textContent;
-    const bioText = $("#bioText");
-    const bioInput = $("#bioInput");
-    const saveBtn = $("#saveBtn");
-    const resetBtn = $("#resetBtn");
-    const saveMsg = $("#saveMsg");
+    /* Toast */
+    const toast = $("#toast");
+    $("#toastClose").addEventListener("click", () => toast.classList.add("hide"));
+    setTimeout(() => toast.classList.add("hide"), 6500);
 
-    saveBtn.addEventListener("click", () => {
-      const val = bioInput.value.trim();
-      if (!val) {
-        saveMsg.textContent = "Please enter bio text.";
-        saveMsg.className = "msg error";
-        return;
+    /* Typing effect */
+    const lines = [
+      "QA Automation Engineer (SDET)",
+      "Java • Selenium • TestNG • Cucumber",
+      "API Testing • Postman • RestAssured",
+      "SQL Validation • Agile • STLC/SDLC"
+    ];
+    const typeEl = $("#typeText");
+    let lineIndex = 0, charIndex = 0, deleting = false;
+
+    function typeLoop(){
+      const t = lines[lineIndex];
+      if(!deleting){
+        typeEl.textContent = t.substring(0, charIndex + 1);
+        charIndex++;
+        if(charIndex === t.length){
+          deleting = true;
+          setTimeout(typeLoop, 1000);
+          return;
+        }
+      } else {
+        typeEl.textContent = t.substring(0, charIndex - 1);
+        charIndex--;
+        if(charIndex === 0){
+          deleting = false;
+          lineIndex = (lineIndex + 1) % lines.length;
+        }
       }
-      bioText.textContent = val;
-      saveMsg.textContent = "Bio updated successfully.";
-      saveMsg.className = "msg ok";
-    });
+      setTimeout(typeLoop, deleting ? 40 : 70);
+    }
+    typeLoop();
 
-    resetBtn.addEventListener("click", () => {
-      bioText.textContent = originalBio;
-      bioInput.value = "";
-      saveMsg.textContent = "Reset done.";
-      saveMsg.className = "msg";
-    });
-
-    /* =========================
-       4) Scroll Reveal
-       ========================= */
+    /* Scroll reveal */
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("in");
       });
     }, { threshold: 0.12 });
-
     $$(".reveal").forEach(el => revealObserver.observe(el));
 
-    /* =========================
-       5) Navbar underline + active section
-       ========================= */
-    let userInteracted = false;
-    ["click","wheel","touchstart","keydown"].forEach(evt=>{
-      document.addEventListener(evt,()=> userInteracted=true,{once:true});
-    });
+    /* ===== SECTION IMAGE: show only for active section ===== */
+    const sectionEls = $$(".section");
+    function activateSection(id){
+      sectionEls.forEach(sec => sec.classList.remove("active"));
+      const sec = document.getElementById(id);
+      if(!sec) return;
+      sec.classList.add("active");
 
-    const sections = $$("section");
+      const img = sec.querySelector(".section-img");
+      const src = sec.getAttribute("data-img");
+      if(img && src) img.src = src;
+    }
+
+    /* ===== NAV underline + active link ===== */
     const navLinks = $$(".navlinks a");
     const underline = $(".nav-underline");
 
     function moveUnderlineTo(link){
-      if (!underline || !link) return;
-      const parent = link.parentElement;
-      const linkRect = link.getBoundingClientRect();
-      const parentRect = parent.getBoundingClientRect();
-      underline.style.width = `${linkRect.width}px`;
-      underline.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
+      if(!underline || !link) return;
+      const parent = link.parentElement; // .navlinks
+      const r1 = link.getBoundingClientRect();
+      const r2 = parent.getBoundingClientRect();
+      underline.style.width = `${r1.width}px`;
+      underline.style.transform = `translateX(${r1.left - r2.left}px)`;
     }
 
     function setActiveLinkById(id){
       navLinks.forEach(a => a.classList.remove("active"));
       const active = document.querySelector(`.navlinks a[href="#${id}"]`);
-      if (active){
+      if(active){
         active.classList.add("active");
         moveUnderlineTo(active);
       }
     }
 
     navLinks.forEach(link => {
-      link.addEventListener("mouseenter", () => moveUnderlineTo(link));
       link.addEventListener("click", () => {
-        userInteracted = true;
+        const id = link.getAttribute("href").slice(1);
+        activateSection(id);
         setTimeout(() => moveUnderlineTo(link), 50);
       });
+      link.addEventListener("mouseenter", () => moveUnderlineTo(link));
     });
 
     window.addEventListener("resize", () => {
       const active = $(".navlinks a.active");
-      if (active) moveUnderlineTo(active);
+      if(active) moveUnderlineTo(active);
     });
 
     window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 140;
-        if (window.scrollY >= sectionTop) current = section.getAttribute("id");
-      });
-      if (current) setActiveLinkById(current);
-
       const nav = document.querySelector("nav");
       if (window.scrollY > 10) nav.classList.add("nav-scrolled");
       else nav.classList.remove("nav-scrolled");
+
+      let current = "";
+      $$("section.section").forEach(section => {
+        const top = section.offsetTop - 140;
+        if (window.scrollY >= top) current = section.id;
+      });
+      if(current) setActiveLinkById(current);
     });
 
-    /* =========================
-       6) Video-like Auto Showcase
-       - plays only if user doesn't interact
-       - stops on any user action
-       ========================= */
-    let autoPlay = true;
+    /* ===== Auto showcase (video-like) stops if user interacts ===== */
+    let userInteracted = false;
     ["scroll","click","wheel","touchstart","keydown"].forEach(evt=>{
-      document.addEventListener(evt,()=> autoPlay=false,{once:true});
+      document.addEventListener(evt, ()=> userInteracted = true, { once:true });
     });
 
     function runShowcase(){
-      if (!autoPlay || userInteracted) return;
-      const order = ["#bio","#skills","#projects","#experience","#education","#demo"];
+      if(userInteracted) return;
+      const order = ["bio","skills","projects","experience","education","demo"];
       let i = 0;
-
       const step = () => {
-        if (!autoPlay || userInteracted || i >= order.length) return;
-        const el = document.querySelector(order[i]);
-        if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+        if(userInteracted || i >= order.length) return;
+        document.getElementById(order[i]).scrollIntoView({behavior:"smooth", block:"start"});
         i++;
         setTimeout(step, 2200);
       };
-
       step();
     }
 
     window.addEventListener("load", () => {
       setTimeout(() => {
-        // set default active underline
-        const bioLink = document.querySelector('.navlinks a[href="#bio"]');
-        if (bioLink) {
-          bioLink.classList.add("active");
-          moveUnderlineTo(bioLink);
-        }
+        activateSection("bio");
+        setActiveLinkById("bio");
+        const first = document.querySelector('.navlinks a[href="#bio"]');
+        if(first) moveUnderlineTo(first);
         runShowcase();
-      }, 900);
+      }, 800);
     });
 
-    /* =========================
-       7) Skill Click → Modal Info
-       ========================= */
-    const skillInfo = {
-      "Tosca": {
-        title: "Tosca (Tricentis)",
-        body: `
-          <ul>
-            <li>Model-based automation: easy maintenance.</li>
-            <li>Good for regression suites and enterprise apps.</li>
-            <li>Best use: smoke + regression + stable UI validation.</li>
-          </ul>
-          <p class="muted">Example: Automate “Update Bio” demo and verify messages.</p>
-        `
-      },
-      "Selenium": {
-        title: "Selenium WebDriver",
-        body: `
-          <ul>
-            <li>Web UI automation with stable locators and waits.</li>
-            <li>POM + TestNG/Cucumber for scalable frameworks.</li>
-            <li>Good for cross-browser UI validation.</li>
-          </ul>
-        `
-      },
-      "Java": {
-        title: "Java",
-        body: `
-          <ul>
-            <li>Core language for automation framework development.</li>
-            <li>OOP concepts for reusable test utilities.</li>
-            <li>Works well with Maven, TestNG, Cucumber.</li>
-          </ul>
-        `
-      },
-      "TestNG": {
-        title: "TestNG",
-        body: `
-          <ul>
-            <li>Test suites, groups, priorities, listeners.</li>
-            <li>Parallel execution support.</li>
-            <li>Reporting & retry logic patterns.</li>
-          </ul>
-        `
-      },
-      "Cucumber": {
-        title: "Cucumber (BDD)",
-        body: `
-          <ul>
-            <li>Gherkin scenarios for readable tests.</li>
-            <li>Step definitions map business flows to automation.</li>
-            <li>Helps collaboration with non-technical stakeholders.</li>
-          </ul>
-        `
-      },
-      "Cypress": {
-        title: "Cypress",
-        body: `
-          <ul>
-            <li>Fast modern UI testing for web apps.</li>
-            <li>Automatic waits and good debugging.</li>
-            <li>Great for smoke + UI workflows.</li>
-          </ul>
-        `
-      },
-      "Playwright": {
-        title: "Playwright",
-        body: `
-          <ul>
-            <li>Modern cross-browser automation (Chromium/Firefox/WebKit).</li>
-            <li>Strong for end-to-end flows + performance-friendly testing.</li>
-            <li>Great with parallel runs in CI.</li>
-          </ul>
-        `
-      },
-      "Postman": {
-        title: "Postman",
-        body: `
-          <ul>
-            <li>API request collections for manual + automated API checks.</li>
-            <li>Environments, variables, auth, quick validations.</li>
-            <li>Perfect for API smoke suite.</li>
-          </ul>
-        `
-      },
-      "RestAssured": {
-        title: "RestAssured",
-        body: `
-          <ul>
-            <li>Java library for API automation.</li>
-            <li>Validations for status codes, schemas, payloads.</li>
-            <li>Used for CRUD + boundary + negative tests.</li>
-          </ul>
-        `
-      },
-      "SQL": {
-        title: "SQL (Joins)",
-        body: `
-          <ul>
-            <li>Validate backend data for UI/API test cases.</li>
-            <li>Joins for relational checks across tables.</li>
-            <li>Used for data integrity validation in healthcare operations.</li>
-          </ul>
-        `
-      },
-      "Jenkins": {
-        title: "Jenkins",
-        body: `
-          <ul>
-            <li>CI pipelines to run automation suites.</li>
-            <li>Scheduled regression, reports, build triggers.</li>
-          </ul>
-        `
-      },
-      "Docker": {
-        title: "Docker",
-        body: `
-          <ul>
-            <li>Containerized test environments.</li>
-            <li>Consistent execution across machines/CI.</li>
-          </ul>
-        `
-      },
-      "Jira": {
-        title: "Jira",
-        body: `
-          <ul>
-            <li>Bug tracking, sprint planning, workflows.</li>
-            <li>Defect lifecycle: severity/priority with clear notes.</li>
-          </ul>
-        `
-      },
-      "GitHub": {
-        title: "GitHub",
-        body: `
-          <ul>
-            <li>Version control + collaboration.</li>
-            <li>GitHub Pages hosting (this site).</li>
-            <li>PR reviews, branching, clean commits.</li>
-          </ul>
-        `
-      },
-      "Agile": {
-        title: "Agile",
-        body: `
-          <ul>
-            <li>Iteration-based delivery and continuous feedback.</li>
-            <li>Daily standups, sprint planning, retrospectives.</li>
-          </ul>
-        `
-      },
-      "STLC": {
-        title: "STLC / SDLC",
-        body: `
-          <ul>
-            <li>Requirements → test planning → execution → reporting.</li>
-            <li>Defect lifecycle & release validation.</li>
-            <li>Smoke → regression → UAT support.</li>
-          </ul>
-        `
+    /* ===== Demo bio update ===== */
+    const originalBio = $("#bioText").textContent;
+    const bioInput = $("#bioInput");
+    const saveMsg = $("#saveMsg");
+
+    $("#saveBtn").addEventListener("click", () => {
+      const val = bioInput.value.trim();
+      if (!val) {
+        saveMsg.textContent = "Please enter bio text.";
+        saveMsg.className = "msg error";
+        return;
       }
+      $("#bioText").textContent = val;
+      saveMsg.textContent = "Bio updated successfully.";
+      saveMsg.className = "msg ok";
+    });
+
+    $("#resetBtn").addEventListener("click", () => {
+      $("#bioText").textContent = originalBio;
+      bioInput.value = "";
+      saveMsg.textContent = "Reset done.";
+      saveMsg.className = "msg";
+    });
+
+    /* ===== Skill Modal ===== */
+    const skillInfo = {
+      "Tosca": { title:"Tosca (Tricentis)", body:`<ul><li>Model-based automation, easy maintenance.</li><li>Strong for regression suites.</li></ul>` },
+      "Selenium": { title:"Selenium WebDriver", body:`<ul><li>UI automation with locators + waits.</li><li>POM + TestNG/Cucumber frameworks.</li></ul>` },
+      "Java": { title:"Java", body:`<ul><li>Framework development & utilities.</li><li>OOP for reusable automation code.</li></ul>` },
+      "TestNG": { title:"TestNG", body:`<ul><li>Suites, groups, priorities, reports.</li><li>Parallel execution support.</li></ul>` },
+      "Cucumber": { title:"Cucumber (BDD)", body:`<ul><li>Readable Gherkin scenarios.</li><li>Business flow mapping via steps.</li></ul>` },
+      "Cypress": { title:"Cypress", body:`<ul><li>Fast web UI testing.</li><li>Great debugging & auto waits.</li></ul>` },
+      "Playwright": { title:"Playwright", body:`<ul><li>Cross-browser automation.</li><li>Great for parallel E2E runs.</li></ul>` },
+      "Postman": { title:"Postman", body:`<ul><li>Collections & environments.</li><li>API smoke checks and validations.</li></ul>` },
+      "RestAssured": { title:"RestAssured", body:`<ul><li>Java API automation.</li><li>CRUD + schema + payload assertions.</li></ul>` },
+      "SQL": { title:"SQL (Joins)", body:`<ul><li>Backend validation for UI/API tests.</li><li>Joins for integrity checks.</li></ul>` },
+      "Jenkins": { title:"Jenkins", body:`<ul><li>CI pipelines for test execution.</li><li>Scheduled regression runs.</li></ul>` },
+      "Docker": { title:"Docker", body:`<ul><li>Containerized test environments.</li><li>Consistent runs in CI.</li></ul>` },
+      "Jira": { title:"Jira", body:`<ul><li>Defect tracking and sprint workflow.</li></ul>` },
+      "GitHub": { title:"GitHub", body:`<ul><li>Version control & collaboration.</li><li>GitHub Pages hosting.</li></ul>` },
+      "Agile": { title:"Agile", body:`<ul><li>Sprints, standups, retrospectives.</li></ul>` },
+      "STLC": { title:"STLC / SDLC", body:`<ul><li>End-to-end testing lifecycle.</li></ul>` }
     };
 
     const modal = $("#skillModal");
     const backdrop = $("#modalBackdrop");
-    const modalTitle = $("#modalTitle");
-    const modalBody = $("#modalBody");
-    const modalClose = $("#modalClose");
-    const modalOk = $("#modalOk");
 
-    function openModal(skillKey){
-      const info = skillInfo[skillKey] || {
-        title: skillKey,
-        body: `<p class="muted">Details coming soon.</p>`
-      };
-      modalTitle.textContent = info.title;
-      modalBody.innerHTML = info.body;
-
+    function openModal(key){
+      const info = skillInfo[key] || {title:key, body:`<p class="muted">Details coming soon.</p>`};
+      $("#modalTitle").textContent = info.title;
+      $("#modalBody").innerHTML = info.body;
       backdrop.classList.add("show");
       modal.classList.add("show");
-      backdrop.setAttribute("aria-hidden","false");
-      modal.setAttribute("aria-hidden","false");
       document.body.classList.add("no-scroll");
-      modalClose.focus();
     }
-
     function closeModal(){
       backdrop.classList.remove("show");
       modal.classList.remove("show");
-      backdrop.setAttribute("aria-hidden","true");
-      modal.setAttribute("aria-hidden","true");
       document.body.classList.remove("no-scroll");
     }
 
-    $("#skillsWrap").addEventListener("click", (e) => {
+    $("#skillsWrap").addEventListener("click", (e)=>{
       const btn = e.target.closest(".skill");
-      if (!btn) return;
+      if(!btn) return;
       openModal(btn.dataset.skill);
     });
-
-    modalClose.addEventListener("click", closeModal);
-    modalOk.addEventListener("click", closeModal);
+    $("#modalClose").addEventListener("click", closeModal);
+    $("#modalOk").addEventListener("click", closeModal);
     backdrop.addEventListener("click", closeModal);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
 
-    /* =========================
-       8) Experience counter animation (starts when experience is visible)
-       ========================= */
-    const expTarget = 6.4; // your professional experience display
+    /* ===== Experience counter ===== */
+    const expTarget = 6.4;
     const expCount = $("#expCount");
     let counterStarted = false;
 
-    const expObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !counterStarted) {
+    const expObserver = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting && !counterStarted){
           counterStarted = true;
-          let start = 0.0;
-          const duration = 1200;
           const t0 = performance.now();
-
+          const duration = 1200;
           const tick = (t) => {
             const p = Math.min(1, (t - t0) / duration);
-            const val = start + (expTarget - start) * p;
+            const val = expTarget * p;
             expCount.textContent = val.toFixed(1);
-            if (p < 1) requestAnimationFrame(tick);
+            if(p < 1) requestAnimationFrame(tick);
           };
           requestAnimationFrame(tick);
         }
       });
-    }, { threshold: 0.25 });
-
+    }, {threshold: 0.25});
     expObserver.observe($("#experience"));
 
-    /* =========================
-       9) Demo Mode button (manually trigger showcase)
-       ========================= */
-    const demoBtn = $("#demoPlay");
+    /* ===== Demo Mode button ===== */
     let demoRunning = false;
-
-    demoBtn.addEventListener("click", () => {
-      userInteracted = true; // demo mode counts as interaction (stops autoplay)
-      autoPlay = false;
-
-      if (demoRunning) return;
+    $("#demoPlay").addEventListener("click", () => {
+      userInteracted = true;
+      if(demoRunning) return;
       demoRunning = true;
 
-      const order = ["#bio","#skills","#projects","#experience","#education","#demo"];
+      const order = ["bio","skills","projects","experience","education","demo"];
       let i = 0;
+      $("#demoPlay").textContent = "▶ Playing...";
 
-      demoBtn.textContent = "▶ Playing...";
       const step = () => {
-        if (i >= order.length) {
-          demoBtn.textContent = "▶ Demo Mode";
+        if(i >= order.length){
+          $("#demoPlay").textContent = "▶ Demo Mode";
           demoRunning = false;
           return;
         }
-        const el = document.querySelector(order[i]);
-        if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+        document.getElementById(order[i]).scrollIntoView({behavior:"smooth", block:"start"});
         i++;
         setTimeout(step, 2000);
       };
