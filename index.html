@@ -10,19 +10,22 @@
 <body>
 
   <!-- NAV -->
-  <nav>
-    <div class="navbar">
-      <a class="brand" href="#top"> <h>Nagaraj Naik</a>
-      <div class="navlinks">
-        <a href="#bio">Bio</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#tosca">Tosca Demo</a>
-      </div>
+<nav>
+  <div class="navbar">
+    <a class="brand" href="#top">Nagaraj Naik</a>
+
+    <div class="navlinks">
+      <a href="#bio">Bio</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#tosca">Tosca Demo</a>
+      <span class="nav-underline"></span>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- HERO -->
   <header class="hero" id="top">
@@ -301,29 +304,83 @@
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   </script>
+  <script>
+/* ========= 1) Stop auto if user interacts ========= */
+let userInteracted = false;
+document.addEventListener("click", () => userInteracted = true, { once: true });
+document.addEventListener("scroll", () => userInteracted = true, { once: true });
+
+/* ========= 2) Auto-scroll + highlight only if no interaction ========= */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    if (!userInteracted) {
+      const bioSection = document.getElementById("bio");
+      const bioLink = document.querySelector('.navlinks a[href="#bio"]');
+      bioSection.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      document.querySelectorAll(".navlinks a").forEach(a => a.classList.remove("active"));
+      bioLink.classList.add("active");
+      moveUnderlineTo(bioLink);
+    }
+  }, 900);
+});
+
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navlinks a");
+
+function setActiveLinkById(id) {
+  navLinks.forEach(a => a.classList.remove("active"));
+  const active = document.querySelector(`.navlinks a[href="#${id}"]`);
+  if (active) {
+    active.classList.add("active");
+    moveUnderlineTo(active);
+  }
+}
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 140;
+    if (window.scrollY >= sectionTop) current = section.getAttribute("id");
+  });
+  if (current) setActiveLinkById(current);
+
+  
+  const nav = document.querySelector("nav");
+  if (window.scrollY > 10) nav.classList.add("nav-scrolled");
+  else nav.classList.remove("nav-scrolled");
+});
+
+
+function moveUnderlineTo(link) {
+  const underline = document.querySelector(".nav-underline");
+  if (!underline || !link) return;
+
+  const parent = link.parentElement; // .navlinks
+  const linkRect = link.getBoundingClientRect();
+  const parentRect = parent.getBoundingClientRect();
+
+  underline.style.width = `${linkRect.width}px`;
+  underline.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
+}
+
+navLinks.forEach(link => {
+  link.addEventListener("mouseenter", () => moveUnderlineTo(link));
+  link.addEventListener("click", () => {
+    userInteracted = true;      // stop auto forever after click
+    setTimeout(() => moveUnderlineTo(link), 50);
+  });
+});
+
+window.addEventListener("resize", () => {
+  const active = document.querySelector(".navlinks a.active");
+  if (active) moveUnderlineTo(active);
+});
+</script>
+
 
 </body>
 </html>
 
-<script>
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navlinks a");
 
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    if (pageYOffset >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(a => {
-    a.classList.remove("active");
-    if (a.getAttribute("href") === "#" + current) {
-      a.classList.add("active");
-    }
-  });
-});
-</script>
