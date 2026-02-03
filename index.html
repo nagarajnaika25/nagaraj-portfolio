@@ -38,11 +38,11 @@
 <!-- MAIN CONTENT -->
 <main>
 
-  <section id="bio" class="section card reveal">
-    <h2>Bio</h2>
-    <img class="section-img" src="assets/bio.jpg" alt="Bio image">
-    <p>...</p>
-  </section>
+  <section id="bio" class="section card reveal" data-img="assets/bio.jpg">
+  <h2>Bio</h2>
+  <img class="section-img" alt="Bio image">
+  <p>...</p>
+</section>
 
   <section id="skills" class="section card reveal">
     <h2>Skills</h2>
@@ -56,23 +56,25 @@
     ...
   </section>
 
-  <section id="experience" class="section card reveal">
-    <h2>Experience</h2>
-    <img class="section-img" src="assets/projects.jpg" alt="Experience image">
-    ...
-  </section>
+  <section id="experience" class="section card reveal" data-img="assets/projects.jpg">
+  <h2>Experience</h2>
+  <img class="section-img" alt="Experience image">
+  ...
+</section>
 
-  <section id="education" class="section card reveal">
-    <h2>Education</h2>
-    <img class="section-img" src="assets/education.jpg" alt="Education image">
-    ...
-  </section>
 
-  <section id="demo" class="section card reveal">
-    <h2>Demo</h2>
-    <img class="section-img" src="assets/demo.jpg" alt="Demo image">
-    ...
-  </section>
+ <section id="education" class="section card reveal" data-img="assets/education.jpg">
+  <h2>Education</h2>
+  <img class="section-img" alt="Education image">
+  ...
+</section>
+
+
+<section id="demo" class="section card reveal" data-img="assets/demo.jpg">
+  <h2>Demo</h2>
+  <img class="section-img" alt="Demo image">
+  ...
+</section>
 
       
 
@@ -362,6 +364,37 @@
   </div>
 
   <script>
+
+/* ===== Show image only for clicked/active section ===== */
+const allSections = document.querySelectorAll("section.section");
+
+function setActiveSection(id){
+  allSections.forEach(sec => sec.classList.remove("active"));
+
+  const sec = document.getElementById(id);
+  if (!sec) return;
+
+  sec.classList.add("active");
+
+  const img = sec.querySelector(".section-img");
+  const src = sec.getAttribute("data-img");
+  if (img && src){
+    img.src = src; // load only when needed
+  }
+}
+
+/* On nav click, activate that section */
+document.querySelectorAll('.navlinks a[href^="#"]').forEach(link => {
+  link.addEventListener("click", () => {
+    const id = link.getAttribute("href").slice(1);
+    setActiveSection(id);
+  });
+});
+
+/* On page load: show Bio image only */
+window.addEventListener("load", () => {
+  setActiveSection("bio");
+});
 
     /* ===== Typing effect ===== */
 const lines = [
