@@ -12,7 +12,7 @@
   <!-- NAV -->
   <nav>
     <div class="navbar">
-      <a class="brand" href="#top">Nagaraj Naik</a>
+      <a class="brand" href="#top"> <h>Nagaraj Naik</a>
       <div class="navlinks">
         <a href="#bio">Bio</a>
         <a href="#skills">Skills</a>
@@ -293,7 +293,6 @@
       saveMsg.className = "msg";
     });
 
-    // 🔥 Live scroll-reveal animation (unique & lightweight)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("in");
@@ -305,3 +304,26 @@
 
 </body>
 </html>
+
+<script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navlinks a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(a => {
+    a.classList.remove("active");
+    if (a.getAttribute("href") === "#" + current) {
+      a.classList.add("active");
+    }
+  });
+});
+</script>
