@@ -268,7 +268,18 @@ nav .navbar{transition: padding .2s ease}
 @media (max-width: 900px){
   .hero-grid{grid-template-columns:1fr}
 }
-h1{font-size:40px;color:#f8fafc;margin-bottom:8px}
+h1{
+  font-size:40px;
+  margin-bottom:8px;
+  background: linear-gradient(90deg, #38bdf8, #22c55e, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradientMove 4s ease infinite;
+}
+
+
 .subtitle{color:#cbd5f5;margin-bottom:14px}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px}
 
