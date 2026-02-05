@@ -52,25 +52,27 @@ body{
 a{color:inherit}
 .muted{color:var(--muted)}
 
-/* Toast */
 .toast{
   position: fixed;
-  top: 14px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(2,6,23,.78);
   border: 1px solid rgba(30,41,59,.85);
   backdrop-filter: blur(10px);
   color: var(--text);
-  padding: 12px 14px;
+  padding: 12px 16px;
   border-radius: 14px;
   box-shadow: var(--shadow);
   z-index: 200;
-  display:flex;
-  align-items:center;
+
+  display: flex;
+  align-items: center;
   gap: 12px;
-  max-width: 940px;
-  width: calc(100% - 26px);
+
+  width: fit-content;        /* medium length */
+  max-width: 520px;          /* control size */
+  min-width: 320px;          /* avoid too small */
 }
 .toast.hide{opacity:0;pointer-events:none;transition:opacity .35s ease}
 .toast-close{
@@ -138,17 +140,31 @@ nav{
 
 /* ===== Section images ===== */
 /* ===== Section images (module-sized, centered) ===== */
+/* Section image hidden by default */
+/* ===== Image strictly inside section card ===== */
+.section{
+  position: relative;
+}
+
+/* image hidden by default */
 .section-img{
-  display: block;
+  display: none;
   width: 100%;
-  max-width: 510px;      /* controls image size */
-  height: 160px;         /* uniform height */
+  max-width: 520px;      /* size inside card */
+  height: 180px;
   object-fit: cover;
-  margin: 12px auto 16px; /* center + spacing */
+  margin: 12px 0 14px;   /* ✅ left aligned, not centered */
   border-radius: 14px;
   border: 1px solid rgba(30,41,59,.7);
   box-shadow: 0 8px 18px rgba(0,0,0,.25);
 }
+
+/* show only for active section */
+.section.active .section-img{
+  display: block;
+}
+
+
 @media (max-width: 600px){
   .section-img{
     max-width: 100%;
