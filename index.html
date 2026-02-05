@@ -242,7 +242,7 @@
     <!-- EXPERIENCE -->
     <section id="experience" class="section card reveal" data-img="assets/experience.jpg">
       <div class="section-head">
-        <h2>Experience</h2>s
+        <h2>Experience</h2>
         <div class="counter">
           <span class="counter-num" id="expCount">0.0</span>
           <span class="counter-label">Years Experience</span>
@@ -478,6 +478,18 @@ function activateSection(id){
   const src = sec.getAttribute("data-img");
   if(img && src) img.src = src;
 }
+// ✅ Make section active automatically on scroll (loads image for that section)
+const secObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      activateSection(entry.target.id);
+      setActiveLinkById(entry.target.id); // optional: also updates navbar active link
+    }
+  });
+}, { threshold: 0.35 });
+
+$$("section.section").forEach(sec => secObserver.observe(sec));
+
 
 /* ===== NAV underline + active link ===== */
 const navLinks = $$(".navlinks a");
