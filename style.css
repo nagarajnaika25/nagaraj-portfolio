@@ -232,6 +232,57 @@ nav .navbar{transition: padding .2s ease}
   grid-template-columns: 1.2fr .8fr;
   gap:18px;
 }
+/* ===== Terminal animation box (Hero right side) ===== */
+.terminal{
+  padding:14px;
+}
+
+.terminal-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding-bottom:10px;
+  margin-bottom:10px;
+  border-bottom:1px solid rgba(30,41,59,.65);
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  display:inline-block;
+}
+.dot.red{background:#ef4444}
+.dot.yellow{background:#f59e0b}
+.dot.green{background:#22c55e}
+
+.term-title{
+  margin-left:8px;
+  color:var(--muted);
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:.3px;
+}
+
+.terminal-body{
+  background: rgba(2,6,23,.55);
+  border:1px solid rgba(30,41,59,.75);
+  border-radius:14px;
+  padding:12px;
+
+  min-height: 230px;
+  max-height: 300px;
+  overflow:auto;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color:#e5e7eb;
+  white-space: pre-wrap;
+}
+
+
+
 @media (max-width: 900px){
   .hero-grid{grid-template-columns:1fr}
 }
