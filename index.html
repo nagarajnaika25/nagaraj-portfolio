@@ -394,184 +394,209 @@
     </div>
   </div>
 
-  <script>
-    /* Helpers */
-    const $ = (s) => document.querySelector(s);
-    const $$ = (s) => document.querySelectorAll(s);
+ <script>
+/* =========================
+   Nagaraj Portfolio - FULL JS
+   Includes:
+   - Year
+   - Toast
+   - Typing effect
+   - Scroll reveal
+   - Section image activation
+   - Navbar underline + active link
+   - Auto showcase
+   - Demo bio update
+   - Skills modal
+   - Projects modal
+   - Experience counter
+   - Demo mode autoplay
+   - Terminal animation (Hero right side)
+   ========================= */
 
-    /* Year */
-    $("#year").textContent = new Date().getFullYear();
+/* Helpers */
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
 
-    /* Toast */
-    const toast = $("#toast");
-    $("#toastClose").addEventListener("click", () => toast.classList.add("hide"));
-    setTimeout(() => toast.classList.add("hide"), 6500);
+/* Year */
+$("#year").textContent = new Date().getFullYear();
 
-    /* Typing effect */
-    const lines = [
-      "QA Automation Engineer (SDET)",
-      "Java • Selenium • TestNG • Cucumber",
-      "API Testing • Postman • RestAssured",
-      "SQL Validation • Agile • STLC/SDLC"
-    ];
-    const typeEl = $("#typeText");
-    let lineIndex = 0, charIndex = 0, deleting = false;
+/* Toast */
+const toast = $("#toast");
+$("#toastClose")?.addEventListener("click", () => toast.classList.add("hide"));
+setTimeout(() => toast.classList.add("hide"), 6500);
 
-    function typeLoop(){
-      const t = lines[lineIndex];
-      if(!deleting){
-        typeEl.textContent = t.substring(0, charIndex + 1);
-        charIndex++;
-        if(charIndex === t.length){
-          deleting = true;
-          setTimeout(typeLoop, 1000);
-          return;
-        }
-      } else {
-        typeEl.textContent = t.substring(0, charIndex - 1);
-        charIndex--;
-        if(charIndex === 0){
-          deleting = false;
-          lineIndex = (lineIndex + 1) % lines.length;
-        }
-      }
-      setTimeout(typeLoop, deleting ? 40 : 70);
+/* Typing effect */
+const lines = [
+  "QA Automation Engineer (SDET)",
+  "Java • Selenium • TestNG • Cucumber",
+  "API Testing • Postman • RestAssured",
+  "SQL Validation • Agile • STLC/SDLC"
+];
+const typeEl = $("#typeText");
+let lineIndex = 0, charIndex = 0, deleting = false;
+
+function typeLoop(){
+  if(!typeEl) return;
+  const t = lines[lineIndex];
+  if(!deleting){
+    typeEl.textContent = t.substring(0, charIndex + 1);
+    charIndex++;
+    if(charIndex === t.length){
+      deleting = true;
+      setTimeout(typeLoop, 1000);
+      return;
     }
-    typeLoop();
-
-    /* Scroll reveal */
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("in");
-      });
-    }, { threshold: 0.12 });
-    $$(".reveal").forEach(el => revealObserver.observe(el));
-
-    /* ===== SECTION IMAGE: show only for active section ===== */
-    const sectionEls = $$(".section");
-    function activateSection(id){
-      sectionEls.forEach(sec => sec.classList.remove("active"));
-      const sec = document.getElementById(id);
-      if(!sec) return;
-      sec.classList.add("active");
-
-      const img = sec.querySelector(".section-img");
-      const src = sec.getAttribute("data-img");
-      if(img && src) img.src = src;
+  } else {
+    typeEl.textContent = t.substring(0, charIndex - 1);
+    charIndex--;
+    if(charIndex === 0){
+      deleting = false;
+      lineIndex = (lineIndex + 1) % lines.length;
     }
+  }
+  setTimeout(typeLoop, deleting ? 40 : 70);
+}
+typeLoop();
 
-    /* ===== NAV underline + active link ===== */
-    const navLinks = $$(".navlinks a");
-    const underline = $(".nav-underline");
+/* Scroll reveal */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add("in");
+  });
+}, { threshold: 0.12 });
+$$(".reveal").forEach(el => revealObserver.observe(el));
 
-    function moveUnderlineTo(link){
-      if(!underline || !link) return;
-      const parent = link.parentElement; // .navlinks
-      const r1 = link.getBoundingClientRect();
-      const r2 = parent.getBoundingClientRect();
-      underline.style.width = `${r1.width}px`;
-      underline.style.transform = `translateX(${r1.left - r2.left}px)`;
+/* ===== SECTION IMAGE: show only for active section ===== */
+const sectionEls = $$(".section");
+function activateSection(id){
+  sectionEls.forEach(sec => sec.classList.remove("active"));
+  const sec = document.getElementById(id);
+  if(!sec) return;
+  sec.classList.add("active");
+
+  const img = sec.querySelector(".section-img");
+  const src = sec.getAttribute("data-img");
+  if(img && src) img.src = src;
+}
+
+/* ===== NAV underline + active link ===== */
+const navLinks = $$(".navlinks a");
+const underline = $(".nav-underline");
+
+function moveUnderlineTo(link){
+  if(!underline || !link) return;
+  const parent = link.parentElement;
+  const r1 = link.getBoundingClientRect();
+  const r2 = parent.getBoundingClientRect();
+  underline.style.width = `${r1.width}px`;
+  underline.style.transform = `translateX(${r1.left - r2.left}px)`;
+}
+
+function setActiveLinkById(id){
+  navLinks.forEach(a => a.classList.remove("active"));
+  const active = document.querySelector(`.navlinks a[href="#${id}"]`);
+  if(active){
+    active.classList.add("active");
+    moveUnderlineTo(active);
+  }
+}
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    const id = link.getAttribute("href").slice(1);
+    activateSection(id);
+    setTimeout(() => moveUnderlineTo(link), 50);
+  });
+  link.addEventListener("mouseenter", () => moveUnderlineTo(link));
+});
+
+window.addEventListener("resize", () => {
+  const active = $(".navlinks a.active");
+  if(active) moveUnderlineTo(active);
+});
+
+window.addEventListener("scroll", () => {
+  const nav = document.querySelector("nav");
+  if (window.scrollY > 10) nav?.classList.add("nav-scrolled");
+  else nav?.classList.remove("nav-scrolled");
+
+  let current = "";
+  $$("section.section").forEach(section => {
+    const top = section.offsetTop - 140;
+    if (window.scrollY >= top) current = section.id;
+  });
+  if(current) setActiveLinkById(current);
+});
+
+/* ===== Auto showcase (video-like) stops if user interacts ===== */
+let userInteracted = false;
+["scroll","click","wheel","touchstart","keydown"].forEach(evt=>{
+  document.addEventListener(evt, ()=> userInteracted = true, { once:true });
+});
+
+function runShowcase(){
+  if(userInteracted) return;
+  const order = ["bio","skills","projects","experience","education","demo"];
+  let i = 0;
+  const step = () => {
+    if(userInteracted || i >= order.length) return;
+    document.getElementById(order[i])?.scrollIntoView({behavior:"smooth", block:"start"});
+    i++;
+    setTimeout(step, 2200);
+  };
+  step();
+}
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    activateSection("bio");
+    setActiveLinkById("bio");
+    const first = document.querySelector('.navlinks a[href="#bio"]');
+    if(first) moveUnderlineTo(first);
+    runShowcase();
+  }, 800);
+});
+
+/* ===== Demo bio update ===== */
+const bioTextEl = $("#bioText");
+const bioInput = $("#bioInput");
+const saveMsg = $("#saveMsg");
+const originalBio = bioTextEl ? bioTextEl.textContent : "";
+
+$("#saveBtn")?.addEventListener("click", () => {
+  const val = bioInput?.value.trim();
+  if (!val) {
+    if(saveMsg){
+      saveMsg.textContent = "Please enter bio text.";
+      saveMsg.className = "msg error";
     }
+    return;
+  }
+  if(bioTextEl) bioTextEl.textContent = val;
+  if(saveMsg){
+    saveMsg.textContent = "Bio updated successfully.";
+    saveMsg.className = "msg ok";
+  }
+});
 
-    function setActiveLinkById(id){
-      navLinks.forEach(a => a.classList.remove("active"));
-      const active = document.querySelector(`.navlinks a[href="#${id}"]`);
-      if(active){
-        active.classList.add("active");
-        moveUnderlineTo(active);
-      }
-    }
+$("#resetBtn")?.addEventListener("click", () => {
+  if(bioTextEl) bioTextEl.textContent = originalBio;
+  if(bioInput) bioInput.value = "";
+  if(saveMsg){
+    saveMsg.textContent = "Reset done.";
+    saveMsg.className = "msg";
+  }
+});
 
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        const id = link.getAttribute("href").slice(1);
-        activateSection(id);
-        setTimeout(() => moveUnderlineTo(link), 50);
-      });
-      link.addEventListener("mouseenter", () => moveUnderlineTo(link));
-    });
-
-    window.addEventListener("resize", () => {
-      const active = $(".navlinks a.active");
-      if(active) moveUnderlineTo(active);
-    });
-
-    window.addEventListener("scroll", () => {
-      const nav = document.querySelector("nav");
-      if (window.scrollY > 10) nav.classList.add("nav-scrolled");
-      else nav.classList.remove("nav-scrolled");
-
-      let current = "";
-      $$("section.section").forEach(section => {
-        const top = section.offsetTop - 140;
-        if (window.scrollY >= top) current = section.id;
-      });
-      if(current) setActiveLinkById(current);
-    });
-
-    /* ===== Auto showcase (video-like) stops if user interacts ===== */
-    let userInteracted = false;
-    ["scroll","click","wheel","touchstart","keydown"].forEach(evt=>{
-      document.addEventListener(evt, ()=> userInteracted = true, { once:true });
-    });
-
-    function runShowcase(){
-      if(userInteracted) return;
-      const order = ["bio","skills","projects","experience","education","demo"];
-      let i = 0;
-      const step = () => {
-        if(userInteracted || i >= order.length) return;
-        document.getElementById(order[i]).scrollIntoView({behavior:"smooth", block:"start"});
-        i++;
-        setTimeout(step, 2200);
-      };
-      step();
-    }
-
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        activateSection("bio");
-        setActiveLinkById("bio");
-        const first = document.querySelector('.navlinks a[href="#bio"]');
-        if(first) moveUnderlineTo(first);
-        runShowcase();
-      }, 800);
-    });
-
-    /* ===== Demo bio update ===== */
-    const originalBio = $("#bioText").textContent;
-    const bioInput = $("#bioInput");
-    const saveMsg = $("#saveMsg");
-
-    $("#saveBtn").addEventListener("click", () => {
-      const val = bioInput.value.trim();
-      if (!val) {
-        saveMsg.textContent = "Please enter bio text.";
-        saveMsg.className = "msg error";
-        return;
-      }
-      $("#bioText").textContent = val;
-      saveMsg.textContent = "Bio updated successfully.";
-      saveMsg.className = "msg ok";
-    });
-
-    $("#resetBtn").addEventListener("click", () => {
-      $("#bioText").textContent = originalBio;
-      bioInput.value = "";
-      saveMsg.textContent = "Reset done.";
-      saveMsg.className = "msg";
-    });
-
-    /* ===== Skill Modal ===== */
-    const skillInfo = {
-      "Tosca": { title:"Tosca (Tricentis)", body:`<ul><li>Model-based automation, easy maintenance.</li><li>Strong for regression suites.</li></ul>` },
-      "Selenium": { title:"Selenium WebDriver", body:`<ul><li>UI automation with locators + waits.</li><li>POM + TestNG/Cucumber frameworks.</li></ul>` },
-      "Java": { title:"Java", body:`<ul><li>Framework development & utilities.</li><li>OOP for reusable automation code.</li></ul>` },
-      "TestNG": { title:"TestNG", body:`<ul><li>Suites, groups, priorities, reports.</li><li>Parallel execution support.</li></ul>` },
-      "Cucumber": { title:"Cucumber (BDD)", body:`<ul><li>Readable Gherkin scenarios.</li><li>Business flow mapping via steps.</li></ul>` },
-      "Cypress": { title:"Cypress", body:`<ul><li>Fast web UI testing.</li><li>Great debugging & auto waits.</li></ul>` },
-      "JavaScript": {title: "JavaScript",
-      body: `
+/* ===== Skill Modal ===== */
+const skillInfo = {
+  "Tosca": { title:"Tosca (Tricentis)", body:`<ul><li>Model-based automation, easy maintenance.</li><li>Strong for regression suites.</li></ul>` },
+  "Selenium": { title:"Selenium WebDriver", body:`<ul><li>UI automation with locators + waits.</li><li>POM + TestNG/Cucumber frameworks.</li></ul>` },
+  "Java": { title:"Java", body:`<ul><li>Framework development & utilities.</li><li>OOP for reusable automation code.</li></ul>` },
+  "TestNG": { title:"TestNG", body:`<ul><li>Suites, groups, priorities, reports.</li><li>Parallel execution support.</li></ul>` },
+  "Cucumber": { title:"Cucumber (BDD)", body:`<ul><li>Readable Gherkin scenarios.</li><li>Business flow mapping via steps.</li></ul>` },
+  "Cypress": { title:"Cypress", body:`<ul><li>Fast web UI testing.</li><li>Great debugging & auto waits.</li></ul>` },
+  "JavaScript": { title:"JavaScript", body:`
     <ul>
       <li>Used for web automation frameworks (Cypress / Playwright).</li>
       <li>DOM handling, events, waits, and assertions.</li>
@@ -579,72 +604,173 @@
       <li>Helps debug UI issues using browser DevTools.</li>
     </ul>
     <p class="muted">Example: Write Cypress tests for login → dashboard → logout.</p>
-  `
-},
-      "Playwright": { title:"Playwright", body:`<ul><li>Cross-browser automation.</li><li>Great for parallel E2E runs.</li></ul>` },
-      "Postman": { title:"Postman", body:`<ul><li>Collections & environments.</li><li>API smoke checks and validations.</li></ul>` },
-      "RestAssured": { title:"RestAssured", body:`<ul><li>Java API automation.</li><li>CRUD + schema + payload assertions.</li></ul>` },
-      "SQL": { title:"SQL (Joins)", body:`<ul><li>Backend validation for UI/API tests.</li><li>Joins for integrity checks.</li></ul>` },
-      "Jenkins": { title:"Jenkins", body:`<ul><li>CI pipelines for test execution.</li><li>Scheduled regression runs.</li></ul>` },
-      "Docker": { title:"Docker", body:`<ul><li>Containerized test environments.</li><li>Consistent runs in CI.</li></ul>` },
-      "Jira": { title:"Jira", body:`<ul><li>Defect tracking and sprint workflow.</li></ul>` },
-      "GitHub": { title:"GitHub", body:`<ul><li>Version control & collaboration.</li><li>GitHub Pages hosting.</li></ul>` },
-      "Agile": { title:"Agile", body:`<ul><li>Sprints, standups, retrospectives.</li></ul>` },
-      "STLC": { title:"STLC / SDLC", body:`<ul><li>End-to-end testing lifecycle.</li></ul>` }
-    };
+  `},
+  "Playwright": { title:"Playwright", body:`<ul><li>Cross-browser automation.</li><li>Great for parallel E2E runs.</li></ul>` },
+  "Postman": { title:"Postman", body:`<ul><li>Collections & environments.</li><li>API smoke checks and validations.</li></ul>` },
+  "RestAssured": { title:"RestAssured", body:`<ul><li>Java API automation.</li><li>CRUD + schema + payload assertions.</li></ul>` },
+  "SQL": { title:"SQL (Joins)", body:`<ul><li>Backend validation for UI/API tests.</li><li>Joins for integrity checks.</li></ul>` },
+  "Jenkins": { title:"Jenkins", body:`<ul><li>CI pipelines for test execution.</li><li>Scheduled regression runs.</li></ul>` },
+  "Docker": { title:"Docker", body:`<ul><li>Containerized test environments.</li><li>Consistent runs in CI.</li></ul>` },
+  "Jira": { title:"Jira", body:`<ul><li>Defect tracking and sprint workflow.</li></ul>` },
+  "GitHub": { title:"GitHub", body:`<ul><li>Version control & collaboration.</li><li>GitHub Pages hosting.</li></ul>` },
+  "Agile": { title:"Agile", body:`<ul><li>Sprints, standups, retrospectives.</li></ul>` },
+  "STLC": { title:"STLC / SDLC", body:`<ul><li>End-to-end testing lifecycle.</li></ul>` }
+};
 
-    const modal = $("#skillModal");
-    const backdrop = $("#modalBackdrop");
+const skillModal = $("#skillModal");
+const skillBackdrop = $("#modalBackdrop");
 
-    function openModal(key){
-      const info = skillInfo[key] || {title:key, body:`<p class="muted">Details coming soon.</p>`};
-      $("#modalTitle").textContent = info.title;
-      $("#modalBody").innerHTML = info.body;
-      backdrop.classList.add("show");
-      modal.classList.add("show");
-      document.body.classList.add("no-scroll");
+function openSkillModal(key){
+  if(!skillModal || !skillBackdrop) return;
+  const info = skillInfo[key] || {title:key, body:`<p class="muted">Details coming soon.</p>`};
+  $("#modalTitle").textContent = info.title;
+  $("#modalBody").innerHTML = info.body;
+  skillBackdrop.classList.add("show");
+  skillModal.classList.add("show");
+  document.body.classList.add("no-scroll");
+}
+function closeSkillModal(){
+  if(!skillModal || !skillBackdrop) return;
+  skillBackdrop.classList.remove("show");
+  skillModal.classList.remove("show");
+  document.body.classList.remove("no-scroll");
+}
+
+$("#skillsWrap")?.addEventListener("click", (e)=>{
+  const btn = e.target.closest(".skill");
+  if(!btn) return;
+  openSkillModal(btn.dataset.skill);
+});
+$("#modalClose")?.addEventListener("click", closeSkillModal);
+$("#modalOk")?.addEventListener("click", closeSkillModal);
+skillBackdrop?.addEventListener("click", closeSkillModal);
+
+/* ===== Project Details Modal ===== */
+const projectInfo = {
+  playwrightSwag: {
+    title: "Playwright E2E Automation – Swag Labs",
+    body: `
+      <ul>
+        <li><b>Domain:</b> E-Commerce (Swag Labs)</li>
+        <li><b>Tools:</b> Playwright, JavaScript, Playwright Test, HTML Reports</li>
+        <li><b>Flows:</b> Login → Inventory → Add to Cart → Checkout → Order validation</li>
+        <li><b>Debugging:</b> Trace on retry, screenshot/video on failures</li>
+        <li><b>Framework:</b> Config-driven execution, CI-friendly setup</li>
+      </ul>
+    `
+  },
+  cypressCombo: {
+    title: "Cypress Automation – Swag Labs + OrangeHRM + API",
+    body: `
+      <ul>
+        <li><b>UI Automation:</b> Swag Labs login/logout, cart, checkout validations</li>
+        <li><b>OrangeHRM:</b> Login, admin menu validations, PIM flows</li>
+        <li><b>API Testing:</b> CRUD + chaining using <code>cy.request</code></li>
+        <li><b>Validations:</b> status codes, UI text assertions, screenshots evidence</li>
+        <li><b>Reports:</b> Mochawesome HTML/JSON reporting</li>
+      </ul>
+    `
+  },
+  apiContact: {
+    title: "API Testing – Contact List Application",
+    body: `
+      <ul>
+        <li><b>Tools:</b> Postman, RestAssured, Java, JSON</li>
+        <li>Developed <b>30+ automated API scripts</b> achieving <b>100% coverage</b> for critical CRUD operations.</li>
+        <li>Validated <b>HTTP status codes</b>, <b>headers</b>, <b>response schema</b>, and <b>payload integrity</b>.</li>
+        <li>Executed <b>positive</b>, <b>negative</b>, and <b>boundary</b> test cases.</li>
+        <li>Used request chaining (extract ID/token → reuse in next API calls).</li>
+      </ul>
+    `
+  },
+  hrmOrange: {
+    title: "HRM Domain Automation – OrangeHRM",
+    body: `
+      <ul>
+        <li><b>Tools:</b> Selenium WebDriver, Java, TestNG, Cucumber, Maven, POM</li>
+        <li>Automated <b>50+ end-to-end scenarios</b> and reduced manual regression by <b>35%</b>.</li>
+        <li>Implemented <b>POM</b> for maintainable framework.</li>
+        <li>Handled dynamic elements with waits and stable locators.</li>
+        <li>Regression suite execution and reporting using TestNG.</li>
+      </ul>
+    `
+  },
+  ecomNixonex: {
+    title: "E-Commerce Automation – Nixonex",
+    body: `
+      <ul>
+        <li><b>Tools:</b> Selenium WebDriver, Java, Cucumber, TestNG, Maven</li>
+        <li>Automated flows: <b>login</b>, <b>search</b>, <b>cart</b>, <b>checkout</b>.</li>
+        <li>Performed functional + regression testing and reported defects.</li>
+        <li>Built <b>data-driven</b> validations across complete user journey.</li>
+        <li>Reusable step definitions with Cucumber BDD.</li>
+      </ul>
+    `
+  }
+};
+
+const projModal = $("#projModal");
+const projBackdrop = $("#projBackdrop");
+
+function openProjectModal(key){
+  if(!projModal || !projBackdrop) return;
+  const info = projectInfo[key] || { title:"Project", body:`<p class="muted">Details coming soon.</p>` };
+  $("#projTitle").textContent = info.title;
+  $("#projBody").innerHTML = info.body;
+  projBackdrop.classList.add("show");
+  projModal.classList.add("show");
+  document.body.classList.add("no-scroll");
+}
+function closeProjectModal(){
+  if(!projModal || !projBackdrop) return;
+  projBackdrop.classList.remove("show");
+  projModal.classList.remove("show");
+  document.body.classList.remove("no-scroll");
+}
+
+$("#projects")?.addEventListener("click", (e) => {
+  const btn = e.target.closest("button[data-project]");
+  if(!btn) return;
+  openProjectModal(btn.dataset.project);
+});
+$("#projClose")?.addEventListener("click", closeProjectModal);
+$("#projOk")?.addEventListener("click", closeProjectModal);
+projBackdrop?.addEventListener("click", closeProjectModal);
+
+/* ===== Global Escape handler for both modals ===== */
+document.addEventListener("keydown", (e) => {
+  if(e.key !== "Escape") return;
+  closeSkillModal();
+  closeProjectModal();
+});
+
+/* ===== Experience counter ===== */
+const expTarget = 6.4;
+const expCount = $("#expCount");
+let counterStarted = false;
+
+const expObserver = new IntersectionObserver((entries)=>{
+  entries.forEach((entry)=>{
+    if(entry.isIntersecting && !counterStarted){
+      counterStarted = true;
+      const t0 = performance.now();
+      const duration = 1200;
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / duration);
+        const val = expTarget * p;
+        if(expCount) expCount.textContent = val.toFixed(1);
+        if(p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     }
-    function closeModal(){
-      backdrop.classList.remove("show");
-      modal.classList.remove("show");
-      document.body.classList.remove("no-scroll");
-    }
+  });
+}, {threshold: 0.25});
 
-    $("#skillsWrap").addEventListener("click", (e)=>{
-      const btn = e.target.closest(".skill");
-      if(!btn) return;
-      openModal(btn.dataset.skill);
-    });
-    $("#modalClose").addEventListener("click", closeModal);
-    $("#modalOk").addEventListener("click", closeModal);
-    backdrop.addEventListener("click", closeModal);
-    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+if($("#experience")) expObserver.observe($("#experience"));
 
-    /* ===== Experience counter ===== */
-    const expTarget = 6.4;
-    const expCount = $("#expCount");
-    let counterStarted = false;
-
-    const expObserver = new IntersectionObserver((entries)=>{
-      entries.forEach((entry)=>{
-        if(entry.isIntersecting && !counterStarted){
-          counterStarted = true;
-          const t0 = performance.now();
-          const duration = 1200;
-          const tick = (t) => {
-            const p = Math.min(1, (t - t0) / duration);
-            const val = expTarget * p;
-            expCount.textContent = val.toFixed(1);
-            if(p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        }
-      });
-    }, {threshold: 0.25});
-    expObserver.observe($("#experience"));
-
-    /* ===== Demo Mode button ===== */
-    $("#demoPlay").addEventListener("click", () => {
+/* ===== Demo Mode button ===== */
+let demoRunning = false;
+$("#demoPlay")?.addEventListener("click", () => {
   userInteracted = true;
   if(demoRunning) return;
   demoRunning = true;
@@ -659,116 +785,69 @@
       demoRunning = false;
       return;
     }
-    document.getElementById(order[i]).scrollIntoView({behavior:"smooth", block:"start"});
+    document.getElementById(order[i])?.scrollIntoView({behavior:"smooth", block:"start"});
     i++;
     setTimeout(step, 2000);
   };
   step();
-});  // ✅ THIS must close here
+});
 
+/* ===== Terminal automation animation (auto loop) ===== */
+window.addEventListener("load", () => {
+  const termOut = document.getElementById("termOut");
+  if(!termOut) return;
 
+  const termLines = [
+    "$ npx playwright test",
+    "✔ Launching Chromium…",
+    "✔ Login → Inventory… PASSED",
+    "✔ Add to Cart… PASSED",
+    "✔ Checkout Flow… PASSED",
+    "✔ Trace on retry: ON",
+    "✔ HTML Report generated",
+    "",
+    "$ npx cypress run",
+    "✔ SwagLabs Login… PASSED",
+    "✔ Add to Cart + Checkout… PASSED",
+    "✔ OrangeHRM Login… PASSED",
+    "✔ API CRUD Tests… PASSED",
+    "✔ Mochawesome Report generated",
+    "",
+    "$ git push origin main",
+    "✔ Deployed on GitHub Pages ✅"
+  ];
 
-  /* ===== Project Details Modal ===== */
-  const projectInfo = {
-    playwrightSwag: {
-      title: "Playwright E2E Automation – Swag Labs",
-      body: `
-        <ul>
-          <li><b>Domain:</b> E-Commerce (Swag Labs)</li>
-          <li><b>Tools:</b> Playwright, JavaScript, Playwright Test, HTML Reports</li>
-          <li><b>Flows:</b> Login → Inventory → Add to Cart → Checkout → Order validation</li>
-          <li><b>Debugging:</b> Trace on retry, screenshot/video on failures</li>
-          <li><b>Framework:</b> Config-driven execution, CI-friendly setup</li>
-        </ul>
-      `
-    },
-    cypressCombo: {
-      title: "Cypress Automation – Swag Labs + OrangeHRM + API",
-      body: `
-        <ul>
-          <li><b>UI Automation:</b> Swag Labs login/logout, cart, checkout validations</li>
-          <li><b>OrangeHRM:</b> Login, admin menu validations, PIM flows</li>
-          <li><b>API Testing:</b> CRUD + chaining using <code>cy.request</code></li>
-          <li><b>Validations:</b> status codes, UI text assertions, screenshots evidence</li>
-          <li><b>Reports:</b> Mochawesome HTML/JSON reporting</li>
-        </ul>
-      `
-    },
-    apiContact: {
-      title: "API Testing – Contact List Application",
-      body: `
-        <ul>
-          <li><b>Tools:</b> Postman, RestAssured, Java, JSON</li>
-          <li>Developed <b>30+ automated API scripts</b> achieving <b>100% coverage</b> for critical CRUD operations.</li>
-          <li>Validated <b>HTTP status codes</b>, <b>headers</b>, <b>response schema</b>, and <b>payload integrity</b>.</li>
-          <li>Executed <b>positive</b>, <b>negative</b>, and <b>boundary</b> test cases.</li>
-          <li>Used request chaining (extract ID/token from response → reuse in next API calls).</li>
-        </ul>
-      `
-    },
-    hrmOrange: {
-      title: "HRM Domain Automation – OrangeHRM",
-      body: `
-        <ul>
-          <li><b>Tools:</b> Selenium WebDriver, Java, TestNG, Cucumber, Maven, POM</li>
-          <li>Automated <b>50+ end-to-end scenarios</b> and reduced manual regression time by <b>35%</b>.</li>
-          <li>Implemented <b>Page Object Model</b> for maintainable automation framework.</li>
-          <li>Handled dynamic elements using waits, stable locators, and validations.</li>
-          <li>Regression suite execution and reporting using TestNG.</li>
-        </ul>
-      `
-    },
-    ecomNixonex: {
-      title: "E-Commerce Automation – Nixonex",
-      body: `
-        <ul>
-          <li><b>Tools:</b> Selenium WebDriver, Java, Cucumber, TestNG, Maven</li>
-          <li>Automated user flows: <b>login</b>, <b>search</b>, <b>cart</b>, <b>checkout</b>.</li>
-          <li>Performed functional + regression testing and reported UI/functional defects.</li>
-          <li>Built <b>data-driven</b> validations across registration → product selection → secure checkout.</li>
-          <li>Reusable step definitions with Cucumber BDD.</li>
-        </ul>
-      `
+  let tLine = 0;
+  let tChar = 0;
+
+  function typeTerminal(){
+    const line = termLines[tLine];
+    termOut.textContent += line.charAt(tChar);
+    tChar++;
+
+    if(tChar > line.length){
+      termOut.textContent += "\n";
+      tLine++;
+      tChar = 0;
+
+      if(tLine >= termLines.length){
+        setTimeout(() => {
+          termOut.textContent = "";
+          tLine = 0;
+          tChar = 0;
+          typeTerminal();
+        }, 1500);
+        return;
+      }
     }
-  };
 
-  const projModal = document.querySelector("#projModal");
-  const projBackdrop = document.querySelector("#projBackdrop");
-
-  function openProjectModal(key){
-    const info = projectInfo[key] || { title:"Project", body:`<p class="muted">Details coming soon.</p>` };
-    document.querySelector("#projTitle").textContent = info.title;
-    document.querySelector("#projBody").innerHTML = info.body;
-    projBackdrop.classList.add("show");
-    projModal.classList.add("show");
-    document.body.classList.add("no-scroll");
+    termOut.scrollTop = termOut.scrollHeight;
+    setTimeout(typeTerminal, 22);
   }
 
-  function closeProjectModal(){
-    projBackdrop.classList.remove("show");
-    projModal.classList.remove("show");
-    document.body.classList.remove("no-scroll");
-  }
-
-  // event delegation: handle all "More Details" buttons
-  document.querySelector("#projects").addEventListener("click", (e) => {
-    const btn = e.target.closest("button[data-project]");
-    if(!btn) return;
-    openProjectModal(btn.dataset.project);
-  });
-
-  document.querySelector("#projClose").addEventListener("click", closeProjectModal);
-  document.querySelector("#projOk").addEventListener("click", closeProjectModal);
-  projBackdrop.addEventListener("click", closeProjectModal);
-
-  document.addEventListener("keydown", (e) => {
-    if(e.key === "Escape") closeProjectModal();
-  });
-
-
-
-
-  </script>
+  typeTerminal();
+});
+</script>
 
 </body>
 </html>
