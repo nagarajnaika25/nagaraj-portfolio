@@ -37,16 +37,10 @@
   </nav>
 
   <!-- HERO -->
-  <div class="card floaty hero-intro delay terminal">
-  <div class="terminal-top">
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="term-title">automation-runner</span>
-  </div>
-  <pre id="termOut" class="terminal-body"></pre>
-</div>
-
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-intro">
+        <h1><span id="typeText"></span><span class="cursor">|</span></h1>
 
         <p class="subtitle">
           Bangalore • <strong>6.4 years professional experience</strong> + <strong>7 months QA Automation internship</strong><br/>
@@ -773,42 +767,6 @@
   });
 
 
-/* ===== Terminal animation ===== */
-const termOut = document.getElementById("termOut");
-const termLines = [
-  "$ npm run test:e2e",
-  "✔ Launching browser…",
-  "✔ Login test… PASSED",
-  "✔ Add to cart… PASSED",
-  "✔ Checkout flow… PASSED",
-  "✔ API CRUD validations… PASSED",
-  "✔ Report generated: mochawesome.html",
-  "",
-  "$ git push origin main",
-  "✔ Deployed via GitHub Pages ✅"
-];
-
-let tLine = 0, tChar = 0;
-function typeTerminal(){
-  if(!termOut) return;
-  const line = termLines[tLine];
-  termOut.textContent += line.charAt(tChar);
-  tChar++;
-
-  if(tChar > line.length){
-    termOut.textContent += "\n";
-    tLine++;
-    tChar = 0;
-
-    if(tLine >= termLines.length){
-      setTimeout(() => { termOut.textContent = ""; tLine = 0; tChar = 0; typeTerminal(); }, 1600);
-      return;
-    }
-  }
-  termOut.scrollTop = termOut.scrollHeight;
-  setTimeout(typeTerminal, 25);
-}
-typeTerminal();
 
 
   </script>
