@@ -36,55 +36,47 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-<div class="card floaty hero-intro delay terminal">
-  <div class="terminal-top">
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="term-title">automation-runner</span>
-  </div>
+<header class="hero" id="top">
+  <div class="container hero-grid">
 
-  <pre id="termOut" class="terminal-body"></pre>
-</div>
+    <!-- LEFT -->
+    <div class="hero-intro">
+      <h1><span id="typeText"></span><span class="cursor">|</span></h1>
 
+      <p class="subtitle">
+        Bangalore • <strong>6.4 years professional experience</strong> + <strong>7 months QA Automation internship</strong><br/>
+        Java | Selenium | TestNG | Cucumber | Cypress | Playwright • API Testing (Postman/RestAssured) • SQL
+      </p>
 
-        <p class="subtitle">
-          Bangalore • <strong>6.4 years professional experience</strong> + <strong>7 months QA Automation internship</strong><br/>
-          Java | Selenium | TestNG | Cucumber | Cypress | Playwright • API Testing (Postman/RestAssured) • SQL
-        </p>
-
-        <div class="cta-row">
-          <a class="btn primary" href="resume.pdf" download>Download Resume (PDF)</a>
-          <a class="btn" href="mailto:nagarajnaiknew36@gmail.com">Email</a>
-          <a class="btn" href="https://github.com/nagarajnaika25" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn" href="https://linkedin.com/in/nagarajnaik961" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-
-        <div class="badges">
-          <span class="badge">Associate QA / QA Automation</span>
-          <span class="badge">Healthcare domain QA</span>
-          <span class="badge">Manual + Automation</span>
-          <span class="badge">SQL Data Validation</span>
-        </div>
+      <div class="cta-row">
+        <a class="btn primary" href="resume.pdf" download>Download Resume (PDF)</a>
+        <a class="btn" href="mailto:nagarajnaiknew36@gmail.com">Email</a>
+        <a class="btn" href="https://github.com/nagarajnaika25" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/nagarajnaik961" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
 
-      <div class="card floaty hero-intro delay">
-        <h2 style="margin-bottom:10px;">Quick Highlights</h2>
-        <ul>
-          <li>STLC/SDLC, defect lifecycle, Agile</li>
-          <li>API testing: Postman & RestAssured</li>
-          <li>SQL (DDL/DML/Joins) data validation</li>
-          <li>Tools: Jira, Jenkins, Docker, GitHub</li>
-        </ul>
-
-        <div class="quote">
-          <p class="quote-text">“Believe in yourself. Every step counts — consistency wins.”</p>
-          <p class="quote-sub">— Daily reminder</p>
-        </div>
+      <div class="badges">
+        <span class="badge">Associate QA / QA Automation</span>
+        <span class="badge">Healthcare domain QA</span>
+        <span class="badge">Manual + Automation</span>
+        <span class="badge">SQL Data Validation</span>
       </div>
     </div>
-  </header>
+
+    <!-- RIGHT (Terminal Animation) -->
+    <div class="card floaty hero-intro delay terminal">
+      <div class="terminal-top">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="term-title">automation-runner</span>
+      </div>
+      <pre id="termOut" class="terminal-body"></pre>
+    </div>
+
+  </div>
+</header>
+
 
   <!-- MAIN -->
   <main class="container">
@@ -774,61 +766,6 @@
   });
 
 
-/* ===== Terminal automation animation (auto loop) ===== */
-const termOut = document.getElementById("termOut");
-
-const termLines = [
-  "$ npx playwright test",
-  "✔ Launching Chromium…",
-  "✔ Login → Inventory… PASSED",
-  "✔ Add to Cart… PASSED",
-  "✔ Checkout Flow… PASSED",
-  "✔ Screenshot captured on failure: OFF",
-  "✔ Trace on retry: ON",
-  "✔ HTML Report generated",
-  "",
-  "$ npx cypress run",
-  "✔ SwagLabs Login… PASSED",
-  "✔ Add to Cart + Checkout… PASSED",
-  "✔ OrangeHRM Login… PASSED",
-  "✔ API CRUD Tests… PASSED",
-  "✔ Mochawesome Report generated",
-  "",
-  "$ git push origin main",
-  "✔ Deployed on GitHub Pages ✅",
-];
-
-let tLine = 0;
-let tChar = 0;
-
-function typeTerminal(){
-  if(!termOut) return;
-
-  const line = termLines[tLine];
-  termOut.textContent += line.charAt(tChar);
-  tChar++;
-
-  if(tChar > line.length){
-    termOut.textContent += "\n";
-    tLine++;
-    tChar = 0;
-
-    if(tLine >= termLines.length){
-      setTimeout(() => {
-        termOut.textContent = "";
-        tLine = 0;
-        tChar = 0;
-        typeTerminal();
-      }, 1500);
-      return;
-    }
-  }
-
-  termOut.scrollTop = termOut.scrollHeight;
-  setTimeout(typeTerminal, 22);
-}
-
-typeTerminal();
 
 
   </script>
