@@ -232,6 +232,23 @@ nav .navbar{transition: padding .2s ease}
   grid-template-columns: 1.2fr .8fr;
   gap:18px;
 }
+
+.hero-video{
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+}
+
+.hero-video video{
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
 @media (max-width: 900px){
   .hero-grid{grid-template-columns:1fr}
 }
