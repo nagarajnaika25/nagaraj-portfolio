@@ -249,8 +249,8 @@ nav .navbar{transition: padding .2s ease}
   gap:18px;
 }
 .hero-image{
-  padding: 12px;
-  min-height: 320px;
+  padding: 10px;
+  min-height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
