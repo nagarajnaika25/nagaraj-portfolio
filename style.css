@@ -19,6 +19,22 @@
   51%, 100% { opacity: 0; }
 }
 
+h1{
+  font-size:40px;
+  margin-bottom:8px;
+  background: linear-gradient(90deg, #38bdf8, #22c55e, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradientMove 4s ease infinite;
+}
+
+@keyframes gradientMove{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 
