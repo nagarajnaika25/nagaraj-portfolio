@@ -250,6 +250,7 @@ nav .navbar{transition: padding .2s ease}
 }
 .hero-image{
   padding: 12px;
+  min-height: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -258,11 +259,11 @@ nav .navbar{transition: padding .2s ease}
 
 .hero-image img{
   width: 100%;
-  max-width: 420px;
-  height: auto;
+  height: 100%;
+  min-height: 320px;
   border-radius: 18px;
   object-fit: cover;
-  border: 1px solid rgba(30,41,59,.75);
+  display: block;
 }
 
 @media (max-width: 900px){
