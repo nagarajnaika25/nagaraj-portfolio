@@ -261,6 +261,7 @@ nav .navbar{transition: padding .2s ease}
   padding: 12px;
   background: rgba(2,6,23,.35);
   border: 1px solid rgba(30,41,59,.75);
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
   display: flex;
   align-items: center;
   justify-content: center;
