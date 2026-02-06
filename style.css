@@ -271,7 +271,7 @@ nav .navbar{transition: padding .2s ease}
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 280deg,
+    transparent 320deg,
     rgba(56,189,248,1) 340deg,
     rgba(168,85,247,1) 350deg,
     rgba(56,189,248,1) 360deg
