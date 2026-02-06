@@ -252,7 +252,7 @@ nav .navbar{transition: padding .2s ease}
   gap: 18px;
 }
 
-/* Hero Image Box (with moving glow border) */
+/* Hero Image Box */
 .hero-image{
   position: relative;
   height: 360px;
@@ -266,6 +266,7 @@ nav .navbar{transition: padding .2s ease}
   justify-content: center;
 }
 
+/* Image fits full box */
 .hero-image img{
   width: 100%;
   height: 100%;
@@ -274,12 +275,15 @@ nav .navbar{transition: padding .2s ease}
   display: block;
   position: relative;
   z-index: 2;
+  
 }
+.border-run{ z-index: 5; }
+.hero-image img{ z-index: 1; }
 
-/* border animation */
+/* Border animation SVG */
 .border-run{
   position: absolute;
-  inset: 6px;         /* inside border */
+  inset: 6px;
   z-index: 3;
   pointer-events: none;
 }
@@ -296,7 +300,7 @@ nav .navbar{transition: padding .2s ease}
   stroke-width: 3.5;
   stroke-linecap: round;
 
-  stroke-dasharray: 18 260;  /* 18 = light size */
+  stroke-dasharray: 18 260;
   animation: borderCar 2s linear infinite;
 
   filter: drop-shadow(0 0 6px rgba(56,189,248,.9))
@@ -307,10 +311,14 @@ nav .navbar{transition: padding .2s ease}
   to { stroke-dashoffset: -278; }
 }
 
-
 @media (max-width: 900px){
-  .hero-grid{grid-template-columns:1fr}
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-image{ height: 320px; }
 }
+
+
+
+
 h1{
   font-size:40px;
   margin-bottom:8px;
