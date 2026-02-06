@@ -241,66 +241,57 @@ nav .navbar{transition: padding .2s ease}
   .navbar{flex-wrap:wrap;justify-content:center}
 }
 
-/* HERO */
-.hero{
-  padding: 32px 0 10px;
-}
-
-.hero-grid{
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 18px;
-}
-
-/* Hero Image Box (with moving glow border) */
 .hero-image{
   position: relative;
-  padding: 12px;
   height: 360px;
   border-radius: 22px;
   overflow: hidden;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: rgba(2,6,23,.35);
-  border: 1px solid rgba(30,41,59,.75);
+  padding: 0;
 }
 
-/* Moving glow border */
+/* base border */
 .hero-image::before{
   content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 24px;
+  inset: 0;
+  border-radius: 22px;
+  padding: 3px;
+  background: rgba(30,41,59,.75);
+  z-index: 1;
+}
+
+/* moving light border */
+.hero-image::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
   padding: 3px;
 
   background: conic-gradient(
     from 0deg,
-    #38bdf8,
-    #a855f7,
-    #22c55e,
-    #38bdf8
+    transparent 0deg,
+    transparent 280deg,
+    rgba(56,189,248,1) 340deg,
+    rgba(168,85,247,1) 350deg,
+    rgba(56,189,248,1) 360deg
   );
 
-  animation: glowRotate 4s linear infinite;
+  animation: borderFlow 2.2s linear infinite;
+  z-index: 2;
 
-  /* Only border visible */
+  /* show ONLY border */
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-
-  opacity: 0.9;
 }
 
-/* Image inside box */
+/* image inside */
 .hero-image img{
   position: relative;
-  z-index: 2;
-
+  z-index: 3;
   width: 100%;
   height: 100%;
   border-radius: 18px;
@@ -308,11 +299,10 @@ nav .navbar{transition: padding .2s ease}
   display: block;
 }
 
-@keyframes glowRotate{
+@keyframes borderFlow{
   0%{ transform: rotate(0deg); }
   100%{ transform: rotate(360deg); }
 }
-
 
 
 
